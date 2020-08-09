@@ -59,7 +59,7 @@ function listar() {
             }
         },
         "bDestroy": true,
-        "iDisplayLength": 5, //paginacion cada 5
+        "iDisplayLength": 10, //paginacion cada 5
         "order": [
                 [0, "desc"]
             ] //ordernar
@@ -100,6 +100,30 @@ function mostrar(idcategoria) {
         $("#descripcion").val(data.descripcion);
         $("#idcategoria").val(data.idcategoria);
     })
+}
+
+//funcion para desactivar registros
+function desactivar(idcategoria) {
+    bootbox.confirm("estas seguro?", function(result) {
+        if (result) {
+            $.post("../ajax/categoria.php?op=desactivar", { idcategoria: idcategoria }, function(e) {
+                bootbox.alert(e);
+                tabla.ajax.reload();
+            });
+        }
+    });
+}
+
+//funcion para activar registros
+function activar(idcategoria) {
+    bootbox.confirm("estas seguro?", function(result) {
+        if (result) {
+            $.post("../ajax/categoria.php?op=activar", { idcategoria: idcategoria }, function(e) {
+                bootbox.alert(e);
+                tabla.ajax.reload();
+            });
+        }
+    });
 }
 
 init();
