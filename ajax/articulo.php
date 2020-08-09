@@ -16,34 +16,53 @@ $imagen=isset($_POST["imagen"])? limpiarCadena($_POST["imagen"]):"";
 switch ($_GET["op"]){
     case 'guardaryeditar':
 
-        if(empty($idarticulo)){
-            $rspta = $articulo->insertar($nombre,$descripcion);
-            echo $rspta ? "Categoria registrada": "categoria no registrada";
+        //validar que si seleccione una imagen
+        if(!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name']))
+        {
+            $imagen="";
         }
         else{
-            $rspta = $articulo->editar($idcategoria,$nombre,$descripcion);
-            echo $rspta ? "Categoria actualizada": "categoria no se actualizo";
+            $ext = explode(".",$_FILES["imagen"]["name"]);
+            //validar tipo de archivos que puede subir
+            if($_FILES['imagen']['type'] == "imagen/jpg" || $_FILES['imagen']['type'] == "imagen/jpeg" || $_FILES['imagen']['type'] == "imagen/png")
+            {
+                //renombrar microtime
+                //extension
+                //no repetir imagen
+                $imagen = round(microtime(true)) . '.' . end($ext);
+                //directorio donde se guardara la imagen
+                move_uploaded_file($_FILES['imagen']['tmp_name'],"../files/articulos/".$magen);
+            }
+        }
+
+        if(empty($idarticulo)){
+            $rspta = $articulo->insertar($idcategoria,$codigo,$nombre,$stock,$descripcion,$imagen);
+            echo $rspta ? "articulo registrada": "articulo no registrada";
+        }
+        else{
+            $rspta = $articulo->editar($idarticulo,$idcategoria,$codigo,$nombre,$stock,$descripcion,$imagen);
+            echo $rspta ? "articulo actualizada": "articulo no se actualizo";
         }
 
     break;
 
     case 'desactivar':
 
-        $rspta = $articulo->desactivar($idcategoria);
-        echo $rspta ? "Categoria desactivada": "categoria no se pudo desactivar";
+        $rspta = $articulo->desactivar($idarticulo);
+        echo $rspta ? "articulo desactivada": "articulo no se pudo desactivar";
 
     break;
 
     case 'activar':
 
-        $rspta = $articulo->activar($idcategoria);
-        echo $rspta ? "Categoria activada": "categoria no se pudo activar";
+        $rspta = $articulo->activar($idarticulo);
+        echo $rspta ? "articulo activada": "articulo no se pudo activar";
 
     break;
 
     case 'mostrar':
 
-        $rspta = $articulo->mostrar($idcategoria);
+        $rspta = $articulo->mostrar($idarticulo);
         //codificar el resultado utilizando json
         echo json_encode($rspta);
 
@@ -58,13 +77,16 @@ switch ($_GET["op"]){
         //recorrer todos los registros uno a uno
         while($reg=$rspta->fetch_object()){
             $data[]=array(
-                "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idcategoria.')"><i class="fa fa-pencil"></i></button>'.
-                ' <button class="btn btn-danger" onclick="desactivar('.$reg->idcategoria.')"><i class="fa fa-close"></i></button>':
-                '<button class="btn btn-warning" onclick="mostrar('.$reg->idcategoria.')"><i class="fa fa-pencil"></i></button>'.
-                ' <button class="btn btn-primary" onclick="activar('.$reg->idcategoria.')"><i class="fa fa-check"></i></button>',
+                "0"=>($reg->condicion)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idarticulo.')"><i class="fa fa-pencil"></i></button>'.
+                ' <button class="btn btn-danger" onclick="desactivar('.$reg->idarticulo.')"><i class="fa fa-close"></i></button>':
+                '<button class="btn btn-warning" onclick="mostrar('.$reg->idarticulo.')"><i class="fa fa-pencil"></i></button>'.
+                ' <button class="btn btn-primary" onclick="activar('.$reg->idarticulo.')"><i class="fa fa-check"></i></button>',
                 "1"=>$reg->nombre,
-                "2"=>$reg->descripcion,
-                "3"=>($reg->condicion)?'<span class="label bg-green">activado</span>':'<span class="label bg-red">desactivado</span>'
+                "2"=>$reg->categoria, //porque tiene el nombre alias categoria en Articulo.php
+                "3"=>$reg->codigo,
+                "4"=>$reg->stock,
+                "5"=>"<img src='../files/articulos/".$reg->imagen."' height='50px' width='50px' >",
+                "6"=>($reg->condicion)?'<span class="label bg-green">activado</span>':'<span class="label bg-red">desactivado</span>'
             );
         }
         $results = array(
