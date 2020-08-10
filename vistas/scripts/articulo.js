@@ -9,14 +9,26 @@ function init() {
         function(e) {
             guardaryeditar(e);
         })
+
+    //cargamos los items al select categoria
+    $.post("../ajax/articulo.php?op=selectCategoria", function(r) {
+        $('#idcategoria').html(r);
+        $('#idcategoria').selectpicker('refresh');
+    });
+
+    $("#imagenmuestra").hide();
 }
 
 //funcion limpiar ya que son ingresados por teclado
 function limpiar() {
     $("#codigo").val("");
     $("#nombre").val("");
-    $("descripcion").val("");
-    $("stock").val("");
+    $("#descripcion").val("");
+    $("#stock").val("");
+    $("#imagenmuestra").attr("src", "");
+    $("#imagenactual").val("");
+    $("#print").hide();
+    $("#idarticulo").val("");
 }
 
 //funcion mostrar formulario
@@ -26,9 +38,11 @@ function mostrarform(flag) {
         $("#listadoregistros").hide();
         $("#formularioregistros").show();
         $("#btnGuardar").prop("disabled", false);
+        $("#btnagregar").hide();
     } else {
         $("#listadoregistros").show();
         $("#formularioregistros").hide();
+        $("#btnagregar").show();
     }
 }
 
@@ -98,11 +112,18 @@ function mostrar(idarticulo) {
         mostrarform(true);
 
         $("#idcategoria").val(data.idcategoria);
+        //obligar que select traiga el que tiene actual
+        $("#idcategoria").selectpicker('refresh');
         $("#codigo").val(data.codigo);
         $("#nombre").val(data.nombre);
         $("#stock").val(data.stock);
         $("#descripcion").val(data.descripcion);
+        $("#imagenmuestra").show();
+        $("#imagenmuestra").attr("src", "../files/articulos/" + data.imagen);
+        $("#imagenactual").val(data.imagen);
         $("#idarticulo").val(data.idarticulo);
+        //muestra el codigo generaod en todas.
+        generarbarcode();
     })
 }
 
@@ -130,4 +151,16 @@ function activar(idarticulo) {
     });
 }
 
+//generar codigo de barras
+function generarbarcode() {
+    codigo = $("#codigo").val();
+    JsBarcode("#barcode", codigo);
+    //mostrar lo que se va a imprimir en conjunto
+    $("#print").show();
+}
+
+//funcion para imprimir codigo barras
+function imprimir() {
+    $("#print").printArea();
+}
 init();

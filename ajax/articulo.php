@@ -19,19 +19,19 @@ switch ($_GET["op"]){
         //validar que si seleccione una imagen
         if(!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name']))
         {
-            $imagen="";
+            $imagen=$_POST["imagenactual"];
         }
         else{
             $ext = explode(".",$_FILES["imagen"]["name"]);
             //validar tipo de archivos que puede subir
-            if($_FILES['imagen']['type'] == "imagen/jpg" || $_FILES['imagen']['type'] == "imagen/jpeg" || $_FILES['imagen']['type'] == "imagen/png")
+            if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png")
             {
                 //renombrar microtime
                 //extension
                 //no repetir imagen
                 $imagen = round(microtime(true)) . '.' . end($ext);
                 //directorio donde se guardara la imagen
-                move_uploaded_file($_FILES['imagen']['tmp_name'],"../files/articulos/".$magen);
+                move_uploaded_file($_FILES["imagen"]["tmp_name"],"../files/articulos/".$imagen);
             }
         }
 
@@ -95,6 +95,19 @@ switch ($_GET["op"]){
             "iTotalDisplayRedcords"=>count($data), //enviamos el total registros a visualizar
             "aaData"=>$data);
         echo json_encode($results);
+
+    break;
+
+    case 'selectCategoria':
+        require_once "../modelos/Categoria.php";
+        $categoria = new Categoria();
+        $rspta = $categoria->select();
+
+        //recorrer todos los registros almcenados.
+        while($reg = $rspta->fetch_object())
+            {
+                echo '<option value='.$reg->idcategoria.'>'.$reg->nombre.'</option>';
+            }
 
     break;
 }

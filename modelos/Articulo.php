@@ -15,14 +15,14 @@ class articulo
     public function insertar($idcategoria,$codigo,$nombre,$stock,$descripcion,$imagen)
     {
         $sql="INSERT INTO articulo (idcategoria,codigo,nombre,stock,descripcion,imagen,condicion)
-        values ('$idcategoria','$codigo','$nombre','$stock','$descripcion','$imagen',1)";
+        values ('$idcategoria','$codigo','$nombre','$stock','$descripcion','$imagen','1')";
         return ejecutarConsulta($sql);
     }
 
     //implementamos un metodo para insertar registros
     public function editar($idarticulo,$idcategoria,$codigo,$nombre,$stock,$descripcion,$imagen)
     {
-        $sql="UPDATE articulo SET idcategoria,'$idcategoria',codigo='$codigo',nombre='$nombre',stock='$stock',descripcion='$descripcion',imagen='$imagen'
+        $sql="UPDATE articulo SET idcategoria='$idcategoria',codigo='$codigo',nombre='$nombre',stock='$stock',descripcion='$descripcion',imagen='$imagen'
         WHERE idarticulo='$idarticulo'";
         return ejecutarConsulta($sql);
     }

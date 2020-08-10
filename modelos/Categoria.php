@@ -54,6 +54,13 @@ class categoria
         $sql="SELECT * FROM categoria";
         return ejecutarConsulta($sql);
     }
+
+    //implementamos un metodo para listar registros y mostrar en un select para se llamado en el ajax de articulo
+    public function select()
+    {
+        $sql="SELECT * FROM categoria WHERE condicion=1";
+        return ejecutarConsulta($sql);
+    }
 }
 
 
