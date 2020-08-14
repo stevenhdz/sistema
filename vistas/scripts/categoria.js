@@ -13,6 +13,8 @@ function init() {
 
 //funcion limpiar
 function limpiar() {
+    //agregado
+    $("#idcategoria").val("");
     $("#nombre").val("");
     $("descripcion").val("");
 }

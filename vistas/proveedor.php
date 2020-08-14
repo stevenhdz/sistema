@@ -11,7 +11,7 @@ require 'header.php';
         <div class="box">
           <div class="box-header with-border">
             <h1 class="box-title">
-              Articulo
+              Proveedor
               <button
                 class="btn btn-success"
                 id="btnagregar"
@@ -30,105 +30,105 @@ require 'header.php';
               class="table table-striped table-bordered table-condensed table-hover"
             >
               <thead>
+                <!-- llama a persona.php en el case -->
                 <th>Opciones</th>
                 <th>Nombre</th>
-                <th>Categoria</th>
-                <th>codigo</th>
-                <th>stock</th>
-                <th>imagen</th>
-                <th>Estado</th>
+                <th>Documento</th>
+                <th>Numero</th>
+                <th>Telefono</th>
+                <th>Email</th>
               </thead>
               <tbody></tbody>
               <tfoot>
                 <th>Opciones</th>
                 <th>Nombre</th>
-                <th>Categoria</th>
-                <th>codigo</th>
-                <th>stock</th>
-                <th>imagen</th>
-                <th>Estado</th>
+                <th>Documento</th>
+                <th>Numero</th>
+                <th>Telefono</th>
+                <th>Email</th>
               </tfoot>
             </table>
           </div>
-          <div class="panel-body" id="formularioregistros">
+          <div
+            class="panel-body"
+            style="height: 400px;"
+            id="formularioregistros"
+          >
             <form name="formulario" id="formulario" method="POST">
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <label>Nombre:</label>
-                <input type="hidden" name="idarticulo" id="idarticulo" />
+                <input type="hidden" name="idcategoria" id="idcategoria" />
+                <input
+                  type="hidden"
+                  name="tipo_persona"
+                  id="tipo_persona"
+                  value="Proveedor"
+                />
                 <input
                   type="text"
                   class="form-control"
                   name="nombre"
                   id="nombre"
                   maxlength="100"
-                  placeholder="Nombre"
+                  placeholder="Nombre del proveedor"
                   required
                 />
               </div>
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <label>Categoria:</label>
+                <label>Tipo Documento:</label>
                 <select
-                  name="idcategoria"
-                  id="idcategoria"
-                  class="form-control selectpicker"
-                  data-live-search="true"
-                  required
-                ></select>
-              </div>
-              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <label>stock:</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  name="stock"
-                  id="stock"
-                  required
-                />
-              </div>
-              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <label>Descripción:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="descripcion"
-                  id="descripcion"
-                  maxlength="256"
-                  placeholder="Descripción"
-                />
-              </div>
-              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <label>Imagen:</label>
-                <input
-                  type="file"
-                  class="form-control"
-                  name="imagen"
-                  id="imagen"
-                />
-                <input type="hidden" name="imagenactual" id="imagenactual" />
-                <img src="" width="150px" height="120px" id="imagenmuestra" />
-              </div>
-              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <label>Codigo:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="codigo"
-                  id="codigo"
-                  placeholder="Codigo Barras"
-                />
-                <button
-                  class="btn btn-success"
-                  type="button"
-                  onclick="generarbarcode()"
+                  class="form-control select-picker"
+                  name="tipo_documento"
+                  id="tipo_documento"
                 >
-                  Generar
-                </button>
-                <button class="btn btn-info" type="button" onclick="imprimir()">
-                  Imprimir
-                </button>
-                <div id="print">
-                  <svg id="barcode"></svg>
-                </div>
+                  <option value="DNI">DNI</option>
+                  <option value="RUC">RUC</option>
+                  <option value="CEDULA">CEDULA</option>
+                </select>
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label>Numero Documento:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="num_documento"
+                  id="num_documento"
+                  maxlength="20"
+                  placeholder="Documento"
+                />
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label>Direccion:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="direccion"
+                  id="direccion"
+                  maxlength="70"
+                  placeholder="Direccion"
+                />
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label>Telefono:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="telefono"
+                  id="telefono"
+                  maxlength="20"
+                  placeholder="Telefono"
+                />
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label>Email:</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  id="email"
+                  maxlength="50"
+                  placeholder="Email"
+                />
               </div>
               <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <button class="btn btn-primary" type="submit" id="btnGuardar">
@@ -160,10 +160,4 @@ require 'header.php';
 <?php
 require 'footer.php';
 ?>
-
-<!-- printarea imprimir -->
-<script type="text/javascript" src="../public/js/jquery.PrintArea.js"></script>
-<!-- barcode -->
-<script type="text/javascript" src="../public/js/JsBarcode.all.min.js"></script>
-<!-- articulo.js -->
-<script type="text/javascript" src="scripts/articulo.js"></script>
+<script type="text/javascript" src="scripts/proveedor.js"></script>
