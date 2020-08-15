@@ -1,17 +1,16 @@
 <?php
-
-//validacion para que no accedan a la vista por url
+//Activamos el almacenamiento en el buffer
 ob_start();
 session_start();
 
-if(!isset($_SESSION["nombre"]))
+if (!isset($_SESSION["nombre"]))
 {
   header("Location: login.html");
 }
 else
 {
 require 'header.php';
-if($_SESSION['compras']==1)
+if ($_SESSION['acceso']==1)
 {
 ?>
 <!--Contenido-->
@@ -24,7 +23,7 @@ if($_SESSION['compras']==1)
         <div class="box">
           <div class="box-header with-border">
             <h1 class="box-title">
-              Proveedor
+              Usuario
               <button
                 class="btn btn-success"
                 id="btnagregar"
@@ -43,56 +42,53 @@ if($_SESSION['compras']==1)
               class="table table-striped table-bordered table-condensed table-hover"
             >
               <thead>
-                <!-- llama a persona.php en el case -->
+                <!-- de acuerdo al ajax se pone el orden aca -->
                 <th>Opciones</th>
                 <th>Nombre</th>
                 <th>Documento</th>
-                <th>Numero</th>
-                <th>Telefono</th>
+                <th>Número</th>
+                <th>Teléfono</th>
                 <th>Email</th>
+                <th>Login</th>
+                <th>Foto</th>
+                <th>Estado</th>
               </thead>
               <tbody></tbody>
               <tfoot>
                 <th>Opciones</th>
                 <th>Nombre</th>
                 <th>Documento</th>
-                <th>Numero</th>
-                <th>Telefono</th>
+                <th>Número</th>
+                <th>Teléfono</th>
                 <th>Email</th>
+                <th>Login</th>
+                <th>Foto</th>
+                <th>Estado</th>
               </tfoot>
             </table>
           </div>
-          <div
-            class="panel-body"
-            style="height: 400px;"
-            id="formularioregistros"
-          >
+          <div class="panel-body" id="formularioregistros">
             <form name="formulario" id="formulario" method="POST">
-              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <label>Nombre:</label>
-                <input type="hidden" name="idcategoria" id="idcategoria" />
-                <input
-                  type="hidden"
-                  name="tipo_persona"
-                  id="tipo_persona"
-                  value="Proveedor"
-                />
+              <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <label>Nombre(*):</label>
+                <input type="hidden" name="idusuario" id="idusuario" />
                 <input
                   type="text"
                   class="form-control"
                   name="nombre"
                   id="nombre"
                   maxlength="100"
-                  placeholder="Nombre del proveedor"
+                  placeholder="Nombre"
                   required
                 />
               </div>
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <label>Tipo Documento:</label>
+                <label>Tipo Documento(*):</label>
                 <select
                   class="form-control select-picker"
                   name="tipo_documento"
                   id="tipo_documento"
+                  required
                 >
                   <option value="DNI">DNI</option>
                   <option value="RUC">RUC</option>
@@ -100,7 +96,7 @@ if($_SESSION['compras']==1)
                 </select>
               </div>
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <label>Numero Documento:</label>
+                <label>Número(*):</label>
                 <input
                   type="text"
                   class="form-control"
@@ -108,28 +104,29 @@ if($_SESSION['compras']==1)
                   id="num_documento"
                   maxlength="20"
                   placeholder="Documento"
+                  required
                 />
               </div>
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <label>Direccion:</label>
+                <label>Dirección:</label>
                 <input
                   type="text"
                   class="form-control"
                   name="direccion"
                   id="direccion"
+                  placeholder="Dirección"
                   maxlength="70"
-                  placeholder="Direccion"
                 />
               </div>
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <label>Telefono:</label>
+                <label>Teléfono:</label>
                 <input
                   type="text"
                   class="form-control"
                   name="telefono"
                   id="telefono"
                   maxlength="20"
-                  placeholder="Telefono"
+                  placeholder="Teléfono"
                 />
               </div>
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -142,6 +139,58 @@ if($_SESSION['compras']==1)
                   maxlength="50"
                   placeholder="Email"
                 />
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label>Cargo:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="cargo"
+                  id="cargo"
+                  maxlength="20"
+                  placeholder="Cargo"
+                />
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label>Login (*):</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="login"
+                  id="login"
+                  maxlength="20"
+                  placeholder="Login"
+                  required
+                />
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label>Clave (*):</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="clave"
+                  id="clave"
+                  maxlength="64"
+                  placeholder="Clave"
+                  required
+                />
+              </div>
+              <!-- listado de todos los permisos --> 
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label>Permisos:</label>
+                <ul style="list-style: none;" id="permisos"></ul>
+              </div>
+
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label>Imagen:</label>
+                <input
+                  type="file"
+                  class="form-control"
+                  name="imagen"
+                  id="imagen"
+                />
+                <input type="hidden" name="imagenactual" id="imagenactual" />
+                <img src="" width="150px" height="120px" id="imagenmuestra" />
               </div>
               <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <button class="btn btn-primary" type="submit" id="btnGuardar">
@@ -178,9 +227,9 @@ else
 }
 require 'footer.php';
 ?>
-<script type="text/javascript" src="scripts/proveedor.js"></script>
-<?php
+
+<script type="text/javascript" src="scripts/usuario.js"></script>
+<?php 
 }
-//liberar bufer
 ob_end_flush();
 ?>

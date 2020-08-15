@@ -12,6 +12,7 @@ Class Usuario
 	}
 
 	//Implementamos un método para insertar registros
+	//permisos
 	public function insertar($nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email,$cargo,$login,$clave,$imagen,$permisos)
 	{
 		$sql="INSERT INTO usuario (nombre,tipo_documento,num_documento,direccion,telefono,email,cargo,login,clave,imagen,condicion)
@@ -22,6 +23,7 @@ Class Usuario
 		$num_elementos=0;
 		$sw=true;
 
+		//cuantos permisos y cuales se le asignan al usuario
 		while ($num_elementos < count($permisos))
 		{
 			$sql_detalle = "INSERT INTO usuario_permiso(idusuario, idpermiso) VALUES('$idusuarionew', '$permisos[$num_elementos]')";
