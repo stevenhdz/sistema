@@ -1,6 +1,6 @@
 var tabla;
 
-//FunciÃ³n que se ejecuta al inicio
+//Función que se ejecuta al inicio
 function init() {
     mostrarform(false);
     listar();
@@ -10,7 +10,7 @@ function init() {
     })
 }
 
-//FunciÃ³n limpiar
+//Función limpiar
 function limpiar() {
     $("#nombre").val("");
     $("#num_documento").val("");
@@ -20,7 +20,7 @@ function limpiar() {
     $("#idpersona").val("");
 }
 
-//FunciÃ³n mostrar formulario
+//Función mostrar formulario
 function mostrarform(flag) {
     limpiar();
     if (flag) {
@@ -35,17 +35,17 @@ function mostrarform(flag) {
     }
 }
 
-//FunciÃ³n cancelarform
+//Función cancelarform
 function cancelarform() {
     limpiar();
     mostrarform(false);
 }
 
-//FunciÃ³n Listar
+//Función Listar
 function listar() {
     tabla = $('#tbllistado').dataTable({
         "aProcessing": true, //Activamos el procesamiento del datatables
-        "aServerSide": true, //PaginaciÃ³n y filtrado realizados por el servidor
+        "aServerSide": true, //Paginación y filtrado realizados por el servidor
         dom: 'Bfrtip', //Definimos los elementos del control de tabla
         buttons: [
             'copyHtml5',
@@ -62,16 +62,16 @@ function listar() {
             }
         },
         "bDestroy": true,
-        "iDisplayLength": 5, //PaginaciÃ³n
+        "iDisplayLength": 5, //Paginación
         "order": [
                 [0, "desc"]
             ] //Ordenar (columna,orden)
     }).DataTable();
 }
-//FunciÃ³n para guardar o editar
+//Función para guardar o editar
 
 function guardaryeditar(e) {
-    e.preventDefault(); //No se activarÃ¡ la acciÃ³n predeterminada del evento
+    e.preventDefault(); //No se activará la acción predeterminada del evento
     $("#btnGuardar").prop("disabled", true);
     var formData = new FormData($("#formulario")[0]);
 
@@ -110,9 +110,9 @@ function mostrar(idpersona) {
     })
 }
 
-//FunciÃ³n para eliminar registros
+//Función para eliminar registros
 function eliminar(idpersona) {
-    bootbox.confirm("Â¿EstÃ¡ Seguro de eliminar el proveedor?", function(result) {
+    bootbox.confirm("¿Está Seguro de eliminar el proveedor?", function(result) {
         if (result) {
             $.post("../ajax/persona.php?op=eliminar", { idpersona: idpersona }, function(e) {
                 bootbox.alert(e);

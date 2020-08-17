@@ -1,25 +1,24 @@
 var tabla;
 
-//funcon que se ejecuta al inicio
+//Función que se ejecuta al inicio
 function init() {
     mostrarform(false);
     listar();
 
-    $("#formulario").on("submit",
-        function(e) {
-            guardaryeditar(e);
-        })
+    $("#formulario").on("submit", function(e) {
+        guardaryeditar(e);
+    })
 
-    //cargamos los items al select categoria
+    //Cargamos los items al select categoria
     $.post("../ajax/articulo.php?op=selectCategoria", function(r) {
-        $('#idcategoria').html(r);
+        $("#idcategoria").html(r);
         $('#idcategoria').selectpicker('refresh');
-    });
 
+    });
     $("#imagenmuestra").hide();
 }
 
-//funcion limpiar ya que son ingresados por teclado
+//Función limpiar
 function limpiar() {
     $("#codigo").val("");
     $("#nombre").val("");
@@ -31,7 +30,7 @@ function limpiar() {
     $("#idarticulo").val("");
 }
 
-//funcion mostrar formulario
+//Función mostrar formulario
 function mostrarform(flag) {
     limpiar();
     if (flag) {
@@ -46,19 +45,18 @@ function mostrarform(flag) {
     }
 }
 
-//funcion cancelarform
+//Función cancelarform
 function cancelarform() {
     limpiar();
     mostrarform(false);
 }
 
-//funcion listar
+//Función Listar
 function listar() {
     tabla = $('#tbllistado').dataTable({
-
-        "aProcessing": true, //activamos el procesamiento del datatables
-        "aServerSide": true, //paginacion y filtrado  realizados por el servidor
-        dom: 'Bfrtip', //definimos los elementos del control de tabla
+        "aProcessing": true, //Activamos el procesamiento del datatables
+        "aServerSide": true, //Paginación y filtrado realizados por el servidor
+        dom: 'Bfrtip', //Definimos los elementos del control de tabla
         buttons: [
             'copyHtml5',
             'excelHtml5',
@@ -74,18 +72,16 @@ function listar() {
             }
         },
         "bDestroy": true,
-        "iDisplayLength": 10, //paginacion cada 5
+        "iDisplayLength": 5, //Paginación
         "order": [
                 [0, "desc"]
-            ] //ordernar
-
+            ] //Ordenar (columna,orden)
     }).DataTable();
 }
-
-//funcion para guardar o editar
+//Función para guardar o editar
 
 function guardaryeditar(e) {
-    e.preventDefault(); //no se activara la accion predeterminada del evento
+    e.preventDefault(); //No se activará la acción predeterminada del evento
     $("#btnGuardar").prop("disabled", true);
     var formData = new FormData($("#formulario")[0]);
 
@@ -101,19 +97,18 @@ function guardaryeditar(e) {
             mostrarform(false);
             tabla.ajax.reload();
         }
+
     });
     limpiar();
 }
 
-//modificar
 function mostrar(idarticulo) {
     $.post("../ajax/articulo.php?op=mostrar", { idarticulo: idarticulo }, function(data, status) {
         data = JSON.parse(data);
         mostrarform(true);
 
         $("#idcategoria").val(data.idcategoria);
-        //obligar que select traiga el que tiene actual
-        $("#idcategoria").selectpicker('refresh');
+        $('#idcategoria').selectpicker('refresh');
         $("#codigo").val(data.codigo);
         $("#nombre").val(data.nombre);
         $("#stock").val(data.stock);
@@ -122,45 +117,45 @@ function mostrar(idarticulo) {
         $("#imagenmuestra").attr("src", "../files/articulos/" + data.imagen);
         $("#imagenactual").val(data.imagen);
         $("#idarticulo").val(data.idarticulo);
-        //muestra el codigo generaod en todas.
         generarbarcode();
+
     })
 }
 
-//funcion para desactivar registros
+//Función para desactivar registros
 function desactivar(idarticulo) {
-    bootbox.confirm("estas seguro?", function(result) {
+    bootbox.confirm("¿Está Seguro de desactivar el artículo?", function(result) {
         if (result) {
             $.post("../ajax/articulo.php?op=desactivar", { idarticulo: idarticulo }, function(e) {
                 bootbox.alert(e);
                 tabla.ajax.reload();
             });
         }
-    });
+    })
 }
 
-//funcion para activar registros
+//Función para activar registros
 function activar(idarticulo) {
-    bootbox.confirm("estas seguro?", function(result) {
+    bootbox.confirm("¿Está Seguro de activar el Artículo?", function(result) {
         if (result) {
             $.post("../ajax/articulo.php?op=activar", { idarticulo: idarticulo }, function(e) {
                 bootbox.alert(e);
                 tabla.ajax.reload();
             });
         }
-    });
+    })
 }
 
-//generar codigo de barras
+//función para generar el código de barras
 function generarbarcode() {
     codigo = $("#codigo").val();
     JsBarcode("#barcode", codigo);
-    //mostrar lo que se va a imprimir en conjunto
     $("#print").show();
 }
 
-//funcion para imprimir codigo barras
+//Función para imprimir el Código de barras
 function imprimir() {
     $("#print").printArea();
 }
+
 init();
