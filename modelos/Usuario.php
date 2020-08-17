@@ -99,5 +99,4 @@ Class Usuario
     	return ejecutarConsulta($sql);  
     }
 }
-
 ?>
