@@ -1,6 +1,6 @@
 var tabla;
 
-//Función que se ejecuta al inicio
+//FunciÃ³n que se ejecuta al inicio
 function init() {
     mostrarform(false);
     listar();
@@ -8,14 +8,14 @@ function init() {
     $("#formulario").on("submit", function(e) {
         guardaryeditar(e);
     });
-    //Cargamos los items al select proveedor
+    //Cargamos los items al select cliente
     $.post("../ajax/venta.php?op=selectCliente", function(r) {
         $("#idcliente").html(r);
         $('#idcliente').selectpicker('refresh');
     });
 }
 
-//Función limpiar
+//FunciÃ³n limpiar
 function limpiar() {
     $("#idcliente").val("");
     $("#cliente").val("");
@@ -39,7 +39,7 @@ function limpiar() {
     $("#tipo_comprobante").selectpicker('refresh');
 }
 
-//Función mostrar formulario
+//FunciÃ³n mostrar formulario
 function mostrarform(flag) {
     limpiar();
     if (flag) {
@@ -60,17 +60,17 @@ function mostrarform(flag) {
     }
 }
 
-//Función cancelarform
+//FunciÃ³n cancelarform
 function cancelarform() {
     limpiar();
     mostrarform(false);
 }
 
-//Función Listar
+//FunciÃ³n Listar
 function listar() {
     tabla = $('#tbllistado').dataTable({
         "aProcessing": true, //Activamos el procesamiento del datatables
-        "aServerSide": true, //Paginación y filtrado realizados por el servidor
+        "aServerSide": true, //PaginaciÃ³n y filtrado realizados por el servidor
         dom: 'Bfrtip', //Definimos los elementos del control de tabla
         buttons: [
             'copyHtml5',
@@ -87,7 +87,7 @@ function listar() {
             }
         },
         "bDestroy": true,
-        "iDisplayLength": 5, //Paginación
+        "iDisplayLength": 5, //PaginaciÃ³n
         "order": [
                 [0, "desc"]
             ] //Ordenar (columna,orden)
@@ -95,11 +95,11 @@ function listar() {
 }
 
 
-//Función ListarArticulos
+//FunciÃ³n ListarArticulos
 function listarArticulos() {
     tabla = $('#tblarticulos').dataTable({
         "aProcessing": true, //Activamos el procesamiento del datatables
-        "aServerSide": true, //Paginación y filtrado realizados por el servidor
+        "aServerSide": true, //PaginaciÃ³n y filtrado realizados por el servidor
         dom: 'Bfrtip', //Definimos los elementos del control de tabla
         buttons: [
 
@@ -113,16 +113,16 @@ function listarArticulos() {
             }
         },
         "bDestroy": true,
-        "iDisplayLength": 5, //Paginación
+        "iDisplayLength": 5, //PaginaciÃ³n
         "order": [
                 [0, "desc"]
             ] //Ordenar (columna,orden)
     }).DataTable();
 }
-//Función para guardar o editar
+//FunciÃ³n para guardar o editar
 
 function guardaryeditar(e) {
-    e.preventDefault(); //No se activará la acción predeterminada del evento
+    e.preventDefault(); //No se activarÃ¡ la acciÃ³n predeterminada del evento
     //$("#btnGuardar").prop("disabled",true);
     var formData = new FormData($("#formulario")[0]);
 
@@ -169,9 +169,9 @@ function mostrar(idventa) {
     });
 }
 
-//Función para anular registros
+//FunciÃ³n para anular registros
 function anular(idventa) {
-    bootbox.confirm("¿Está Seguro de anular la venta?", function(result) {
+    bootbox.confirm("Â¿EstÃ¡ Seguro de anular la venta?", function(result) {
         if (result) {
             $.post("../ajax/venta.php?op=anular", { idventa: idventa }, function(e) {
                 bootbox.alert(e);
@@ -181,7 +181,7 @@ function anular(idventa) {
     })
 }
 
-//Declaración de variables necesarias para trabajar con las compras y
+//DeclaraciÃ³n de variables necesarias para trabajar con las compras y
 //sus detalles
 var impuesto = 18;
 var cont = 0;
@@ -219,7 +219,7 @@ function agregarDetalle(idarticulo, articulo, precio_venta) {
         $('#detalles').append(fila);
         modificarSubototales();
     } else {
-        alert("Error al ingresar el detalle, revisar los datos del artículo");
+        alert("Error al ingresar el detalle, revisar los datos del artÃ­culo");
     }
 }
 
