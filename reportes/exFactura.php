@@ -18,11 +18,11 @@ require('Factura.php');
 //Establecemos los datos de la empresa
 $logo = "logo.jpg";
 $ext_logo = "jpg";
-$empresa = "Soluciones Innovadoras Perú S.A.C.";
+$empresa = "SLTECHNOLOGY";
 $documento = "20477157772";
-$direccion = "Chongoyape, José Gálvez 1368";
-$telefono = "931742904";
-$email = "jcarlos.ad7@gmail.com";
+$direccion = "Medellin, Colombia";
+$telefono = "3023571736";
+$email = "stevenhernandezj@gmail.com";
 
 //Obtenemos los datos de la cabecera de la venta actual
 require_once "../modelos/Venta.php";

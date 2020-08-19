@@ -31,11 +31,11 @@ $rspta = $venta->ventacabecera($_GET["id"]);
 $reg = $rspta->fetch_object();
 
 //Establecemos los datos de la empresa
-$empresa = "Soluciones Innovadoras Perú S.A.C.";
+$empresa = "SLTECHNOLOGY";
 $documento = "20477157772";
-$direccion = "Chongoyape, José Gálvez 1368";
-$telefono = "931742904";
-$email = "jcarlos.ad7@gmail.com";
+$direccion = "Medellin, Colombia";
+$telefono = "3023571736";
+$email = "stevenhernandezj@gmail.com";
 
 ?>
 <div class="zona_impresion">
