@@ -6,10 +6,10 @@ define("DB_HOST","localhost");
 define("DB_NAME","dbsistema"); 
 
 //usario de base de datos
-define("DB_USERNAME", "root");
+define("DB_USERNAME", "mamp");
 
 //contraseña base de datos
-define("DB_PASSWORD","");
+define("DB_PASSWORD","hacker2012.L");
 
 //codificacion de caracter
 define("DB_ENCODE","utf8");
