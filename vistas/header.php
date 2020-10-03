@@ -208,6 +208,24 @@ if(strlen(session_id())< 1)
                 }
             ?>  
 
+            <?php
+             if($_SESSION['chat']==1)
+                {  
+                    echo'<li class="treeview">
+                    <a href="#">
+                      <i class="fa fa-folder"></i> <span>Chat</span>
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="chat.php"><i class="fa fa-circle-o"></i> Chat General</a></li>
+                    </ul>
+                  </li>';
+                }
+            ?> 
+
+            
+          
+
             <li>
               <a href="#">
                 <i class="fa fa-plus-square"></i> <span>Ayuda</span>

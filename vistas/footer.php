@@ -23,6 +23,7 @@
 <!--select-boostrap personalizado-->
 <script src="../public/js/bootstrap-select.min.js"></script>
 
+
 </body>
 
 </html>

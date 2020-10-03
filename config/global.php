@@ -6,7 +6,7 @@ define("DB_HOST","localhost");
 define("DB_NAME","dbsistema"); 
 
 //usario de base de datos
-define("DB_USERNAME", "mamp");
+define("DB_USERNAME", "prueba");
 
 //contraseña base de datos
 define("DB_PASSWORD","hacker2012.L");
