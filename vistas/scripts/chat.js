@@ -1,6 +1,6 @@
 var from = null,
             start = 0,
-            url = "http://25.45.184.240:8888/sistema/modelos/Chat.php";
+            url = "http://25.45.184.240:8888/sistema/modelos/Chat.php"; //TODO: CON HAMACHI
             url = "http://localhost:8888/sistema/modelos/Chat.php";
         $(document).ready(function () {
             from = prompt("Ingresa nombre");

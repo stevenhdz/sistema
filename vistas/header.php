@@ -72,8 +72,10 @@ if(strlen(session_id())< 1)
                   <li class="user-header">
                   <img src="../files/usuarios/<?php echo $_SESSION['imagen'];?>" class="user-image" alt="User Image">
                     <p>
-                      Desarrollador de Software
-                      <small>:D</small>
+                      Cuenta: <span class="hidden-xs"><?php echo $_SESSION['nombre'];?></span>
+                      <small><span class="hidden-xs"><?php echo $_SESSION['cargo'];?></span></small>
+                      <small><span class="hidden-xs"><?php echo $_SESSION['telefono'];?></span></small>
+                      <small><span class="hidden-xs"><?php echo $_SESSION['email'];?></span></small>
                     </p>
                   </li>
                   
@@ -81,7 +83,9 @@ if(strlen(session_id())< 1)
                   <li class="user-footer">
                     
                     <div class="pull-right">
-                      <a href="../ajax/usuario.php?op=salir" class="btn btn-default btn-flat">Cerrar</a>
+                      <a href="../ajax/usuario.php?op=guardaryeditar" class="btn btn-default btn-flat"><i class="fa fa-key" aria-hidden="true"></i>Contraseña</a>
+                      <a href="../ajax/usuario.php?op=salir" class="btn btn-default btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i>
+Cerrar sesion</a>
                     </div>
                   </li>
                 </ul>
@@ -172,8 +176,7 @@ if(strlen(session_id())< 1)
                     </a>
                     <ul class="treeview-menu">
                       <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                      <li><a href="permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
-                      
+                      <li><a href="permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>  
                     </ul>
                   </li>';
                 }
@@ -213,11 +216,26 @@ if(strlen(session_id())< 1)
                 {  
                     echo'<li class="treeview">
                     <a href="#">
-                      <i class="fa fa-folder"></i> <span>Chat</span>
+                      <i class="fa fa-comments"></i> <span>Chat</span>
                       <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
                       <li><a href="chat.php"><i class="fa fa-circle-o"></i> Chat General</a></li>
+                    </ul>
+                  </li>';
+                }
+            ?> 
+
+          <?php
+             if($_SESSION['soporte']==1)
+                {  
+                    echo'<li class="treeview">
+                    <a href="#">
+                      <i class="fa fa-briefcase"></i><span>Soporte</span>
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="soporte.php"><i class="fa fa-circle-o"></i>Soporte</a></li>
                     </ul>
                   </li>';
                 }
@@ -229,13 +247,13 @@ if(strlen(session_id())< 1)
             <li>
               <a href="#">
                 <i class="fa fa-plus-square"></i> <span>Ayuda</span>
-                <small class="label pull-right bg-red">PDF</small>
+                <small class="label pull-right bg-red">Pagina</small>
               </a>
             </li>
             <li>
               <a href="#">
-                <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
-                <small class="label pull-right bg-yellow">IT</small>
+                <i class="fa fa-info-circle"></i> <span>Acerca</span>
+                <small class="label pull-right bg-yellow">Pagina</small>
               </a>
             </li>
                         
