@@ -16,59 +16,53 @@ if($_SESSION['chat']==1)
 {
 ?>
 
-    
+
 
 <link rel="stylesheet" href="../public/css/style.css" />
 
-    <div class="content-wrapper">        
-        <!-- Main content -->
-        <section class="content">
-            <div class=" row">
-              <div class="col-md-fix">
-                  <div class="box">
-                   
-  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-header">
-    <img src="../public/images/mascara.png" width="30" height="30" class="rounded mr-2" alt="...">
-    <strong class="mr-auto">Admin</strong>
-    <small>
-      hace:
-        <script type="text/javascript"> 
-          var d = new Date();
-          document.write(d.getMinutes());
-        </script>
-      minutos
-    </small>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="toast-body">
-    <pre><span class="hidden-xs"><?php echo $_SESSION['nombre'];?></span>, El Chat sera eliminado en cada 24 hrs</pre>
-  </div>
-</div>
+<div class="content-wrapper">
+  <!-- Main content -->
+  <section class="content">
+    <div class=" row">
+      <div class="col-md-12">
+        <div class="box">
 
-                  <div id="messages"></div>
-                    <form>
-                        <input class="form-control" type="text" id="message" autocomplete="off" autofocus />
-                        <button class="btn btn-primary" type="submit">
-                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                        </button>
-                    </form>
-    
-    
-                    <!--Fin centro -->
-                    </div>
-              </div><!-- /.col -->
-          </div><!-- /.row -->
-      </section><!-- /.content -->
+          <div class="box-header with-border">
+            <h1 class="box-title">Chat</h1>
+            <div class="box-tools pull-right">
+            </div>
+          </div>
 
-    </div><!-- /.content-wrapper -->
-  <!--Fin-Contenido-->
+          <div class="container-fluid">
+            <div class="row">
+              <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div id="messages"></div>
+              </div>
+            </div>
+          </div>
+          <form>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Escribir aqui..." aria-label="Escribir aqui..."
+                aria-describedby="button-addon2" autofocus autocomplete="off" id="message">
+              <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="submit">Enviar</button>
+              </div>
+            </div>
+          </form>
 
-    
 
-    <?php
+          <!--Fin centro -->
+        </div>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </section><!-- /.content -->
+
+</div><!-- /.content-wrapper -->
+<!--Fin-Contenido-->
+
+
+
+<?php
 
 }
 else

@@ -60,24 +60,23 @@ switch ($_GET["op"]){
 
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
- 				"0"=>($reg->soporte)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idsoporte.')"><i class="fa fa-pencil"></i></button>':
- 					'<button class="btn btn-warning" onclick="mostrar('.$reg->idsoporte.')"><i class="fa fa-pencil"></i></button>',
-                     "1"=>$reg->nombres,
-                     "2"=>$reg->apellidos,
-                     "3"=>$reg->fechaentrada,
-                     "4"=>$reg->direccion,
-                     "5"=>$reg->cantidadequipos,
-                     "6"=>$reg->valortotal,
-                     "7"=>$reg->identificador,
-                     "8"=>$reg->codigo,
-                     "9"=>$reg->telefono,
-                     "10"=>$reg->tipopago,
-                     "11"=>$reg->descripcion,
-                     "12"=>$reg->valorunidad,
-                     "13"=>$reg->adjuntar,
+ 				"0"=>($reg->soporte)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idsoporte.')"><i class="fas fa-pencil-alt"></i></button>':
+ 					'<button class="btn btn-warning" onclick="mostrar('.$reg->idsoporte.')"><i class="fas fa-pencil-alt"></i></button>',
+                     "1"=>$reg->nombres." ".$reg->apellidos,
+                     "2"=>$reg->fechaentrada,
+                     "3"=>$reg->direccion,
+                     "4"=>$reg->cantidadequipos,
+                     "5"=>$reg->valortotal,
+                     "6"=>$reg->identificador,
+                     /* "7"=>$reg->codigo, */
+                     "7"=>$reg->telefono,
+                     "8"=>$reg->tipopago,
+                     "9"=>$reg->descripcion,
+                     "10"=>$reg->valorunidad,
+                     "11"=>$reg->adjuntar,
                  //carpeta usuarios estaran las imagenes
- 				"14"=>"<img src='../files/soporte/".$reg->adjuntar."' height='50px' width='50px' >",
- 				
+				 "12"=>"
+				 <img src='../files/soporte/".$reg->adjuntar."' onclick='this.width=500;this.height=400;' onmouseout='this.width=70;this.height=70;' width='70' height='70' >",
  				);
  		}
  		$results = array(

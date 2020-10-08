@@ -10,7 +10,8 @@
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="../public/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../public/css/font-awesome.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.1/css/all.min.css"/>
 
     <!-- Theme style -->
     <link rel="stylesheet" href="../public/css/AdminLTE.min.css">
@@ -28,35 +29,39 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b>ADVentas</b></a>
+            <a href="../../index2.html"><b>SLTECHNOLOGY</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg">Ingrese sus datos de Acceso</p>
             <form method="post" id="frmAcceso">
+                <img src="../public/images/icon_login.png" height="320px">
                 <div class="form-group has-feedback">
                     <input type="text" id="logina" name="logina" class="form-control" placeholder="Usuario" autocomplete="off">
                     <span class="fa fa-user form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" id="clavea" name="clavea" class="form-control" placeholder="Password" autocomplete="off">
+                    
+                    <input type="password" id="clavea" name="clavea" class="form-control" placeholder="Contraseña" autocomplete="off">
                     <span class="fa fa-key form-control-feedback"></span>
+           
+                        <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>
+                  
                 </div>
                 <div class="row">
-                    <div class="col-xs-8">
+                    <div class="col-xs-7">
+                        <a href="#">Olvidé mi password</a><br>
 
                     </div>
                     <!-- /.col -->
-                    <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+                    <div class="col-xs-5">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat"><i class="fas fa-sign-in-alt"></i>Ingresar</button>
                     </div>
                     <!-- /.col -->
                 </div>
             </form>
 
 
-            <a href="#">Olvidé mi password</a><br>
-
+            
 
         </div>
         <!-- /.login-box-body -->
@@ -71,6 +76,26 @@
     <script src="../public/js/bootbox.min.js"></script>
 
     <script type="text/javascript" src="scripts/login.js"></script>
+
+    <script type="text/javascript">
+        function mostrarPassword(){
+                var cambio = document.getElementById("clavea");
+                if(cambio.type == "password"){
+                    cambio.type = "text";
+                    $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+                }else{
+                    cambio.type = "password";
+                    $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+                }
+            } 
+            
+            $(document).ready(function () {
+            //CheckBox mostrar contraseña
+            $('#ShowPassword').click(function () {
+                $('#Password').attr('type', $(this).is(':checked') ? 'text' : 'password');
+            });
+        });
+        </script>
 
 
 </body>

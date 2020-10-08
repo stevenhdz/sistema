@@ -135,6 +135,7 @@ require 'footer.php';
 <script src="../public/js/Chart.min.js"></script>
 <script src="../public/js/Chart.bundle.min.js"></script>
 <script type="text/javascript">
+
 var ctx = document.getElementById("compras").getContext('2d');
 var compras = new Chart(ctx, {
     type: 'bar',

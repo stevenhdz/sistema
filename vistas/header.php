@@ -27,6 +27,10 @@ if(strlen(session_id())< 1)
     <link rel="apple-touch-icon" href="../public/img/apple-touch-icon.png">
     <link rel="shortcut icon" href="../public/img/favicon.ico">
 
+     <!-- material icon -->
+    <link  href="../public/css/icon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.1/css/all.min.css"/>
+
     <!-- datatables -->
     <link rel="stylesheet" href="../public/datatables/jquery.dataTables.min.css">
     <link rel="stylesheet" href="../public/datatables/buttons.dataTables.min.css">
@@ -44,7 +48,7 @@ if(strlen(session_id())< 1)
         <!-- Logo -->
         <a href="index2.html" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>SL</b>TECHNOLOGY</span>
+          <span class="logo-mini"><b>SL</b>TEC</span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg"><b>SLTECHNOLOGY</b></span>
         </a>
@@ -83,7 +87,7 @@ if(strlen(session_id())< 1)
                   <li class="user-footer">
                     
                     <div class="pull-right">
-                      <a href="../ajax/usuario.php?op=guardaryeditar" class="btn btn-default btn-flat"><i class="fa fa-key" aria-hidden="true"></i>Contraseña</a>
+                      <a href="../ajax/usuario.php?op=mostrar(1)" class="btn btn-default btn-flat"><i class="fa fa-key" aria-hidden="true"></i>Contraseña</a>
                       <a href="../ajax/usuario.php?op=salir" class="btn btn-default btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i>
 Cerrar sesion</a>
                     </div>
@@ -109,7 +113,9 @@ Cerrar sesion</a>
                 {  
                     echo'<li>
                       <a href="escritorio.php">
-                        <i class="fa fa-tasks"></i> <span>Escritorio</span>
+                      <i class="fas fa-bars"></i>
+
+                      <span>Escritorio</span>
                       </a>
                     </li>';
                 }
@@ -120,7 +126,7 @@ Cerrar sesion</a>
                 {  
                     echo'<li class="treeview">
                     <a href="#">
-                      <i class="fa fa-laptop"></i>
+                    <i class="fas fa-warehouse"></i>
                       <span>Almacén</span>
                       <i class="fa fa-angle-left pull-right"></i>
                     </a>
@@ -137,7 +143,7 @@ Cerrar sesion</a>
                 {  
                     echo'<li class="treeview">
                     <a href="#">
-                      <i class="fa fa-th"></i>
+                    <i class="fas fa-shopping-cart"></i>
                       <span>Compras</span>
                        <i class="fa fa-angle-left pull-right"></i>
                     </a>
@@ -154,7 +160,7 @@ Cerrar sesion</a>
                 {  
                     echo'<li class="treeview">
                     <a href="#">
-                      <i class="fa fa-shopping-cart"></i>
+                    <i class="fas fa-cart-arrow-down"></i>
                       <span>Ventas</span>
                        <i class="fa fa-angle-left pull-right"></i>
                     </a>
@@ -171,7 +177,8 @@ Cerrar sesion</a>
                 {  
                     echo'<li class="treeview">
                     <a href="#">
-                      <i class="fa fa-folder"></i> <span>Acceso</span>
+                    <i class="fas fa-universal-access"></i>
+                        <span>Acceso</span>
                       <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
@@ -187,7 +194,8 @@ Cerrar sesion</a>
                 {  
                     echo'<li class="treeview">
                     <a href="#">
-                      <i class="fa fa-bar-chart"></i> <span>Consulta Compras</span>
+                    <i class="fas fa-shopping-bag"></i>
+                        <span>Consulta Compras</span>
                       <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
@@ -201,7 +209,8 @@ Cerrar sesion</a>
                 {  
                     echo'<li class="treeview">
                     <a href="#">
-                      <i class="fa fa-bar-chart"></i> <span>Consulta Ventas</span>
+                      <i class="fas fa-shopping-bag"></i>
+                      <span>Consulta Ventas</span>
                       <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
@@ -216,7 +225,8 @@ Cerrar sesion</a>
                 {  
                     echo'<li class="treeview">
                     <a href="#">
-                      <i class="fa fa-comments"></i> <span>Chat</span>
+                    <i class="fas fa-comment-alt"></i>
+                    <span>Chat</span>
                       <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
@@ -231,7 +241,8 @@ Cerrar sesion</a>
                 {  
                     echo'<li class="treeview">
                     <a href="#">
-                      <i class="fa fa-briefcase"></i><span>Soporte</span>
+                    <i class="fab fa-fort-awesome"></i>
+                    <span>Soporte</span>
                       <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
@@ -246,13 +257,13 @@ Cerrar sesion</a>
 
             <li>
               <a href="#">
-                <i class="fa fa-plus-square"></i> <span>Ayuda</span>
+              <i class="fas fa-hands-helping"></i> <span>Ayuda</span>
                 <small class="label pull-right bg-red">Pagina</small>
               </a>
             </li>
             <li>
               <a href="#">
-                <i class="fa fa-info-circle"></i> <span>Acerca</span>
+              <i class="fas fa-address-card"></i> <span>Acerca</span>
                 <small class="label pull-right bg-yellow">Pagina</small>
               </a>
             </li>

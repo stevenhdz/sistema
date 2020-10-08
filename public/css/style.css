@@ -1,9 +1,9 @@
 
   #messages {
-    height: 70vh;
+    height: 65vh;
     overflow-x: hidden;
     padding: 10px;
-    background-image: url(../images/bg.jpg);
+    background-image: url(../images/bg1.jpg);
   }
   form {
     display: flex;

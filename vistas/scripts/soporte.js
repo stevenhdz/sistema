@@ -57,12 +57,36 @@ function listar() {
     tabla = $('#tbllistado').dataTable({
         "aProcessing": true, //Activamos el procesamiento del datatables
         "aServerSide": true, //Paginación y filtrado realizados por el servidor
+        
         dom: 'Bfrtip', //Definimos los elementos del control de tabla
         buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdf'
+                {
+                    extend:    'copyHtml5',
+                    text:      '<i class="fa fa-files-o"></i>',
+                    titleAttr: 'Copy',
+                    className: 'red'
+                },
+                {
+                    extend:    'excelHtml5',
+                    autoFilter: true,
+                    sheetName: 'Registros',
+                    text:      '<i class="fa fa-file-excel-o"></i>',
+                    titleAttr: 'Excel'
+                },
+                {
+                    extend:    'csvHtml5',
+                    text:      '<i class="fas fa-file"></i>',
+                    titleAttr: 'CSV'
+                },
+                {
+                    extend:    'pdfHtml5',
+                    orientation: 'landscape',
+                    pageSize: 'LEGAL',
+                    text:      '<i class="fa fa-file-pdf-o"></i>',
+                    titleAttr: 'PDF'
+                    //TODO: horizontal
+                },
+          
         ],
         "ajax": {
             url: '../ajax/soporte.php?op=listar',
@@ -73,7 +97,7 @@ function listar() {
             }
         },
         "bDestroy": true,
-        "iDisplayLength": 5, //Paginación
+        "iDisplayLength": 7, //Paginación
         "order": [
                 [0, "desc"]
             ] //Ordenar (columna,orden)
@@ -114,7 +138,7 @@ function mostrar(idsoporte) {
         $("#fechaentrada").val(data.fechaentrada);
         $("#direccion").val(data.direccion);
         $("#cantidadequipos").val(data.cantidadequipos);
-        $("#valortotal").val(data.valortotal);
+        $("#valortotal").val(data.valortotal = data.valorunidad * data.cantidadequipos);
         $("#identificador").val(data.identificador);
         $("#codigo").val(data.codigo);
         $("#telefono").val(data.telefono);

@@ -1,13 +1,14 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>Version</b> 1.0.0
+        <b>Version</b> 1.1.1
     </div>
-    <strong>Copyright &copy; 2019<a href="www.incanatoit.com">SLTECHNOLOGY</a>.</strong> All rights reserved.
+    <strong>© 2020 <a href="">SLTECHNOLOGY</a>, Inc.</strong>
 </footer>
 <!-- jQuery 2.1.4 -->
 <script src="../public/js/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
 <script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/bootstrap/js/popper.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../public/js/app.min.js"></script>
 <!--datatables-->
@@ -22,6 +23,7 @@
 <script src="../public/js/bootbox.min.js"></script>
 <!--select-boostrap personalizado-->
 <script src="../public/js/bootstrap-select.min.js"></script>
+
 
 
 </body>
