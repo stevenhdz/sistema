@@ -132,13 +132,14 @@ function mostrar(idsoporte) {
     $.post("../ajax/soporte.php?op=mostrar", { idsoporte: idsoporte }, function(data, status) {
         data = JSON.parse(data);
         mostrarform(true);
-
+        
         $("#nombres").val(data.nombres);
         $("#apellidos").val(data.apellidos);
-        $("#fechaentrada").val(data.fechaentrada);
+        $("#fechaentrada").val(moment(data.fechaentrada).format("YYYY-MM-DDThh:mm")); //TODO: FORMAT MOMENTJS
         $("#direccion").val(data.direccion);
         $("#cantidadequipos").val(data.cantidadequipos);
-        $("#valortotal").val(data.valortotal = data.valorunidad * data.cantidadequipos);
+        /* $("#valortotal").val($.number(data.valortotal = data.valorunidad * data.cantidadequipos, 2));  //TODO: format jquery number js */
+        $("#valortotal").val(data.valortotal = data.valorunidad * data.cantidadequipos); 
         $("#identificador").val(data.identificador);
         $("#codigo").val(data.codigo);
         $("#telefono").val(data.telefono);

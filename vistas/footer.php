@@ -1,6 +1,11 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>Version</b> 1.1.1
+        <b>V</b> 2.3.1
+
+    <!-- //TODO: versión principal del software. Ejemplo: 1.X.X, 3.X.X
+    //TODO: funcionalidades. Ejemplo: X.2.X, X.3.X
+    //TODO: revisión del código por algun fallo. Ejemplo: X.X.2, X.X.4 -->
+
     </div>
     <strong>© 2020 <a href="">SLTECHNOLOGY</a>, Inc.</strong>
 </footer>
@@ -23,6 +28,10 @@
 <script src="../public/js/bootbox.min.js"></script>
 <!--select-boostrap personalizado-->
 <script src="../public/js/bootstrap-select.min.js"></script>
+<!--momentjs personalizado-->
+<script src="../public/js/moment.min.js"></script>
+<!--jquery number personalizado-->
+<script src="../public/js/jquery.number.min.js"></script>
 
 
 

@@ -29,11 +29,10 @@ var from = null,
                 load();
             });
         }
-        //TODO: ORGANIZAR
         function renderMessage(item) {
             let time = new Date(item.created);
-            time = `${time.getHours()}:${time.getMinutes()}:${time.getMilliseconds("SS")}`;
-            console.log(item.created);
+            //TODO: MOMENTJS
+            time = moment(time).format("hh:mm A");
             return `<div class="msg"><p>${item.from}</p>${item.message}<span>${time}</span></div>`;
         }
 

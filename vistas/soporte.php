@@ -88,8 +88,8 @@ if ($_SESSION['soporte']==1)
               <div class="container-fluid">
                 <div class="row">
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>FechaEntrada(*):</label>
-                    <input type="datetime" class="form-control" name="fechaentrada" id="fechaentrada">
+                    <label>Fecha Entrada(*):</label>
+                    <input type="datetime-local" class="form-control" name="fechaentrada" id="fechaentrada">
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Telefono:</label>
@@ -106,7 +106,7 @@ if ($_SESSION['soporte']==1)
                       placeholder="Direccion">
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>TipoPago:</label>
+                    <label>Tipo Pago:</label>
                     <input type="text" class="form-control" name="tipopago" id="tipopago" maxlength="256"
                       placeholder="Tipopago">
                   </div>
@@ -115,12 +115,12 @@ if ($_SESSION['soporte']==1)
               <div class="container-fluid">
                 <div class="row">
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>CantidadEquipos:</label>
+                    <label>Cantidad Equipos:</label>
                     <input type="number" class="form-control" name="cantidadequipos" id="cantidadequipos"
                       maxlength="256" placeholder="CantidadEquipos">
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>ValorTotal:</label>
+                    <label>Total a cobrar:</label>
                     <input type="text" class="form-control" name="valortotal" id="valortotal" maxlength="256"
                       placeholder="Valortotal">
                   </div>
@@ -129,7 +129,7 @@ if ($_SESSION['soporte']==1)
               <div class="container-fluid">
                 <div class="row">
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Valorunidad:</label>
+                    <label>Valor Unidad:</label>
                     <input type="text" class="form-control" name="valorunidad" id="valorunidad" maxlength="256"
                       placeholder="Valorunidad">
                   </div>
@@ -142,31 +142,59 @@ if ($_SESSION['soporte']==1)
               </div>
               <div class="container-fluid">
                 <div class="row">
-              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <label>Descripcion:</label>
-                <textarea type="text" class="form-control" name="descripcion" id="descripcion" maxlength="2500"
-                  placeholder="Descripción" rows="10"></textarea>
+                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Descripcion:</label>
+                    <textarea type="text" class="form-control" name="descripcion" id="descripcion" maxlength="2500"
+                      placeholder="Descripción" rows="10"></textarea>
+                  </div>
+                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Adjuntar:</label>
+                    <input type="file" class="form-control" name="adjuntar" id="adjuntar">
+                    <br>
+
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                      Ver Contenido
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+                      tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Contenido</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-dialog modal-dialog-scrollable modal-body">
+                            <input type="hidden" name="adjuntaractual" id="adjuntaractual">
+                            <br>
+                            <img src="" width="460px" height="500px" id="adjuntarmuestra">
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
               </div>
-              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <label>Adjuntar:</label>
-                <input type="file" class="form-control" name="adjuntar" id="adjuntar">
-                <input type="hidden" name="adjuntaractual" id="adjuntaractual">
-                <br>
-                <img src="" width="150px" height="120px" onclick="this.width=312;this.height=300;"
-                  onmouseout="this.width=150;this.height=120;" width="150px" height="120px" id="adjuntarmuestra">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>
+                      Guardar</button>
+                    <button class="btn btn-danger" onclick="cancelarform()" type="button"><i
+                        class="fa fa-arrow-circle-left"></i> Cancelar</button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="container-fluid">
-            <div class="row">
-              <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>
-                  Guardar</button>
-                <button class="btn btn-danger" onclick="cancelarform()" type="button"><i
-                    class="fa fa-arrow-circle-left"></i> Cancelar</button>
-              </div>
-            </div>
-          </div>
             </form>
           </div>
           <!--Fin centro -->
