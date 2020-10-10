@@ -64,7 +64,6 @@ function listar() {
                     extend:    'copyHtml5',
                     text:      '<i class="fa fa-files-o"></i>',
                     titleAttr: 'Copy',
-                    className: 'red'
                 },
                 {
                     extend:    'excelHtml5',
@@ -138,13 +137,12 @@ function mostrar(idsoporte) {
         $("#fechaentrada").val(moment(data.fechaentrada).format("YYYY-MM-DDThh:mm")); //TODO: FORMAT MOMENTJS
         $("#direccion").val(data.direccion);
         $("#cantidadequipos").val(data.cantidadequipos);
-        /* $("#valortotal").val($.number(data.valortotal = data.valorunidad * data.cantidadequipos, 2));  //TODO: format jquery number js */
-        $("#valortotal").val(data.valortotal = data.valorunidad * data.cantidadequipos); 
+        $("#valortotal").val($.number(data.valortotal = data.valorunidad * data.cantidadequipos));  //TODO: format jquery number js
         $("#identificador").val(data.identificador);
         $("#codigo").val(data.codigo);
         $("#telefono").val(data.telefono);
         $("#tipopago").val(data.tipopago);
-        $("#descripcion").val(data.descripcion);
+        $("#descripcion").val(+"hola:"+data.descripcion);
         $("#valorunidad").val(data.valorunidad);
         $("#adjuntarmuestra").show();
         $("#adjuntarmuestra").attr("src", "../files/soporte/" + data.adjuntar);

@@ -107,8 +107,20 @@ if ($_SESSION['soporte']==1)
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Tipo Pago:</label>
-                    <input type="text" class="form-control" name="tipopago" id="tipopago" maxlength="256"
-                      placeholder="Tipopago">
+
+
+                    <div class="input-group mb-3">
+                      <select type="text" class="form-control" name="tipopago" id="tipopago" maxlength="256"
+                        placeholder="Tipopago" class="custom-select" id="inputGroupSelect02">
+                        <option selected>Elige...</option>
+                        <option value="1">Efectivo</option>
+                        <option value="2">Transferencia</option>
+                        <option value="3">Otro</option>
+                      </select>
+                      <div class="input-group-append">
+                        <label class="input-group-text" for="inputGroupSelect02">Opciones</label>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -144,8 +156,32 @@ if ($_SESSION['soporte']==1)
                 <div class="row">
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Descripcion:</label>
+
+                   
+
+                    <!--ckeditor -->
+                    <script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+
+
+
                     <textarea type="text" class="form-control" name="descripcion" id="descripcion" maxlength="2500"
                       placeholder="Descripción" rows="10"></textarea>
+                    <textarea style="visibility:hidden;" type="text" class="form-control" name="descripcion" id="descripcion1" maxlength="2500"
+                      placeholder="Descripción" rows="1" ></textarea>
+                      
+
+                    <script type="text/javascript">
+                      CKEDITOR.replace('descripcion');
+
+                      timer = setInterval(updateDiv, 1);
+                      function updateDiv() {
+                        var editorText = CKEDITOR.instances.descripcion.getData();
+                        $('#descripcion1').html(editorText);
+                      }
+                    </script>
+
+                    
+
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Adjuntar:</label>

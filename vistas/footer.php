@@ -9,11 +9,12 @@
     </div>
     <strong>© 2020 <a href="">SLTECHNOLOGY</a>, Inc.</strong>
 </footer>
-<!-- jQuery 2.1.4 -->
+<!-- jQuery 3.1.1 -->
 <script src="../public/js/jquery-3.1.1.min.js"></script>
+<!-- Popper -->
+<script src="../public/bootstrap/js/popper.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
 <script src="../public/js/bootstrap.min.js"></script>
-<script src="../public/bootstrap/js/popper.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../public/js/app.min.js"></script>
 <!--datatables-->
@@ -33,6 +34,8 @@
 <!--jquery number personalizado-->
 <script src="../public/js/jquery.number.min.js"></script>
 
+
+                
 
 
 </body>
