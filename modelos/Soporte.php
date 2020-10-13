@@ -11,18 +11,18 @@ Class Soporte
 	}
 
 	//Implementamos un método para insertar registros
-	public function insertar($nombres,$apellidos,$fechaentrada,$direccion,$cantidadequipos,$valortotal,$identificador,$codigo,$telefono,$tipopago,$descripcion,$valorunidad,$adjuntar)
+	public function insertar($nombres,$apellidos,$fechaentrada,$direccion,$cantidadequipos,$valortotal,$identificador,$correo,$respuesta,$telefono,$tipopago,$descripcion,$valorunidad,$adjuntar)
 	{
-		$sql="INSERT INTO soporte (nombres,apellidos,fechaentrada,direccion,cantidadequipos,valortotal,identificador,codigo,telefono,tipopago,descripcion,valorunidad,adjuntar)
-		VALUES ('$nombres','$apellidos','$fechaentrada','$direccion','$cantidadequipos','$valortotal','$identificador','$codigo','$telefono','$tipopago','$descripcion','$valorunidad','$adjuntar')";
+		$sql="INSERT INTO soporte (nombres,apellidos,fechaentrada,direccion,cantidadequipos,valortotal,identificador,correo,respuesta,telefono,tipopago,descripcion,valorunidad,adjuntar)
+		VALUES ('$nombres','$apellidos','$fechaentrada','$direccion','$cantidadequipos','$valortotal','$identificador','$correo','$respuesta','$telefono','$tipopago','$descripcion','$valorunidad','$adjuntar')";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para editar registros
-	public function editar($idsoporte,$nombres,$apellidos,$fechaentrada,$direccion,$cantidadequipos,$valortotal,$identificador,$codigo,$telefono,$tipopago,$descripcion,$valorunidad,$adjuntar)
+	public function editar($idsoporte,$nombres,$apellidos,$fechaentrada,$direccion,$cantidadequipos,$valortotal,$identificador,$correo,$respuesta,$telefono,$tipopago,$descripcion,$valorunidad,$adjuntar)
 	{
 		$sql="UPDATE soporte SET nombres='$nombres',apellidos='$apellidos',fechaentrada='$fechaentrada',direccion='$direccion',cantidadequipos='$cantidadequipos',valortotal='$valortotal',
-        identificador='$identificador',codigo='$codigo',telefono='$telefono',tipopago='$tipopago',descripcion='$descripcion',valorunidad='$valorunidad',adjuntar='$adjuntar' WHERE idsoporte='$idsoporte'";
+        identificador='$identificador',correo='$correo',respuesta='$respuesta',telefono='$telefono',tipopago='$tipopago',descripcion='$descripcion',valorunidad='$valorunidad',adjuntar='$adjuntar' WHERE idsoporte='$idsoporte'";
 		return ejecutarConsulta($sql);
 	}
 

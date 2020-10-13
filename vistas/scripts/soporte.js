@@ -22,7 +22,8 @@ function limpiar() {
     $("#cantidadequipos").val("");
     $("#valortotal").val("");
     $("#identificador").val("");
-    $("#codigo").val("");
+    $("#correo").val("");
+    $("#respuesta").val("");
     $("#telefono").val("");
     $("#tipopago").val("");
     $("#descripcion").val("");
@@ -139,10 +140,11 @@ function mostrar(idsoporte) {
         $("#cantidadequipos").val(data.cantidadequipos);
         $("#valortotal").val($.number(data.valortotal = data.valorunidad * data.cantidadequipos));  //TODO: format jquery number js
         $("#identificador").val(data.identificador);
-        $("#codigo").val(data.codigo);
+        $("#correo").val(data.correo);
+        $("#respuesta").val(data.respuesta);
         $("#telefono").val(data.telefono);
         $("#tipopago").val(data.tipopago);
-        $("#descripcion").val(+"hola:"+data.descripcion);
+        $("#descripcion").val(data.descripcion);
         $("#valorunidad").val(data.valorunidad);
         $("#adjuntarmuestra").show();
         $("#adjuntarmuestra").attr("src", "../files/soporte/" + data.adjuntar);

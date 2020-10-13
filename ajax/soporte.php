@@ -12,7 +12,8 @@ $direccion=isset($_POST["direccion"])? limpiarCadena($_POST["direccion"]):"";
 $cantidadequipos=isset($_POST["cantidadequipos"])? limpiarCadena($_POST["cantidadequipos"]):"";
 $valortotal=isset($_POST["valortotal"])? limpiarCadena($_POST["valortotal"]):"";
 $identificador=isset($_POST["identificador"])? limpiarCadena($_POST["identificador"]):"";
-$codigo=isset($_POST["codigo"])? limpiarCadena($_POST["codigo"]):"";
+$correo=isset($_POST["correo"])? limpiarCadena($_POST["correo"]):"";
+$respuesta=isset($_POST["respuesta"])? limpiarCadena($_POST["respuesta"]):"";
 $telefono=isset($_POST["telefono"])? limpiarCadena($_POST["telefono"]):"";
 $tipopago=isset($_POST["tipopago"])? limpiarCadena($_POST["tipopago"]):"";
 $descripcion=isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):"";
@@ -36,11 +37,11 @@ switch ($_GET["op"]){
 			}
 		}
 		if (empty($idsoporte)){
-			$rspta=$soporte->insertar($nombres,$apellidos,$fechaentrada,$direccion,$cantidadequipos,$valortotal,$identificador,$codigo,$telefono,$tipopago,$descripcion,$valorunidad,$adjuntar);
+			$rspta=$soporte->insertar($nombres,$apellidos,$fechaentrada,$direccion,$cantidadequipos,$valortotal= $valorunidad * $cantidadequipos,$identificador,$correo,$respuesta,$telefono,$tipopago,$descripcion,$valorunidad,$adjuntar);
 			echo $rspta ? "Soporte registrado" : "Soporte no se pudo registrar";
 		}
 		else {
-			$rspta=$soporte->editar($idsoporte,$nombres,$apellidos,$fechaentrada,$direccion,$cantidadequipos,$valortotal,$identificador,$codigo,$telefono,$tipopago,$descripcion,$valorunidad,$adjuntar);
+			$rspta=$soporte->editar($idsoporte,$nombres,$apellidos,$fechaentrada,$direccion,$cantidadequipos,$valortotal= $valorunidad * $cantidadequipos,$identificador,$correo,$respuesta,$telefono,$tipopago,$descripcion,$valorunidad,$adjuntar);
 			echo $rspta ? "Soporte actualizado" : "Soporte no se pudo actualizar";
 		}
     break;
@@ -61,21 +62,29 @@ switch ($_GET["op"]){
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
  				"0"=>($reg->soporte)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idsoporte.')"><i class="fas fa-pencil-alt"></i></button>':
- 					'<button class="btn btn-warning" onclick="mostrar('.$reg->idsoporte.')"><i class="fas fa-pencil-alt"></i></button>',
+					 '<button class="btn btn-warning" onclick="mostrar('.$reg->idsoporte.')"><i class="fas fa-pencil-alt"></i></button>
+					 <a href="mailto:'.$reg->correo.'?cc=stevenhernandezj@gmail.com&bcc=&subject=Factura SLTECHNOLOGY&body=
+						Señor@ usuario, '.$reg->nombres." ".$reg->apellidos.'
+						%0d%0a%0d%0a
+						Con '.$reg->cantidadequipos.' 
+						equipos entrados en la fecha '.$reg->fechaentrada.', que vienen de la direccion '.$reg->direccion.'
+					 	con el problema/configuracion indicada : '.$reg->descripcion.' tendra un valor a cobrar en su totalidad de $'.$reg->valortotal.'
+					 "class="btn btn-primary"><i class="fas fa-print"></i></a>',
                      "1"=>$reg->nombres." ".$reg->apellidos,
                      "2"=>$reg->fechaentrada,
                      "3"=>$reg->direccion,
                      "4"=>$reg->cantidadequipos,
-                     "5"=>$reg->valortotal,
+                     "5"=>'$ '.$reg->valortotal,
                      "6"=>$reg->identificador,
-                     /* "7"=>$reg->codigo, */
-                     "7"=>$reg->telefono,
-                     "8"=>$reg->tipopago,
-                     "9"=>$reg->descripcion,
-                     "10"=>$reg->valorunidad,
-                     "11"=>$reg->adjuntar,
+					 "7"=>$reg->correo,
+					 "8"=>$reg->respuesta,
+                     "9"=>$reg->telefono,
+                     "10"=>$reg->tipopago,
+					 "11"=>'<textarea type="text" class="form-control" placeholder="Sin descripción" >'.$reg->descripcion.'</textarea>',
+                     "12"=>'$ '.$reg->valorunidad,
                  //carpeta usuarios estaran las imagenes
-				 "12"=>"
+				 "13"=>"
+				 <p>$reg->adjuntar</p>
 				 <img src='../files/soporte/".$reg->adjuntar."' onclick='this.width=500;this.height=400;' onmouseout='this.width=70;this.height=70;' width='70' height='70' >",
  				);
  		}

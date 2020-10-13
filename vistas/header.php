@@ -38,6 +38,10 @@ if(strlen(session_id())< 1)
 
     <!-- select bootstrap personalizado -->
     <link rel="stylesheet" href="../public/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../public/css/trix.css">
+
+    
+
 
   </head>
   <body class="hold-transition skin-blue-light sidebar-mini">
