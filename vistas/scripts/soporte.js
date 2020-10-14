@@ -97,7 +97,7 @@ function listar() {
             }
         },
         "bDestroy": true,
-        "iDisplayLength": 7, //Paginación
+        "iDisplayLength": 4, //Paginación
         "order": [
                 [0, "desc"]
             ] //Ordenar (columna,orden)

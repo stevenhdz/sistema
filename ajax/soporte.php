@@ -39,10 +39,31 @@ switch ($_GET["op"]){
 		if (empty($idsoporte)){
 			$rspta=$soporte->insertar($nombres,$apellidos,$fechaentrada,$direccion,$cantidadequipos,$valortotal= $valorunidad * $cantidadequipos,$identificador,$correo,$respuesta,$telefono,$tipopago,$descripcion,$valorunidad,$adjuntar);
 			echo $rspta ? "Soporte registrado" : "Soporte no se pudo registrar";
+
+			//TODO: ENVIAR CORREO 
+			ini_set( 'display_errors', 1 );
+			error_reporting( E_ALL );
+			$from = "stevenhernandezj@gmail.com";
+			$to = $correo;
+			$subject = "Factura SLTECHNOLOGY";
+			$message = "$descripcion";
+			$headers = "From:" . $from;
+			$files = "../files/soporte/".$adjuntar;
+			mail($to,$subject,$message, $headers, $files);
 		}
 		else {
 			$rspta=$soporte->editar($idsoporte,$nombres,$apellidos,$fechaentrada,$direccion,$cantidadequipos,$valortotal= $valorunidad * $cantidadequipos,$identificador,$correo,$respuesta,$telefono,$tipopago,$descripcion,$valorunidad,$adjuntar);
 			echo $rspta ? "Soporte actualizado" : "Soporte no se pudo actualizar";
+
+			//TODO: ENVIAR CORREO si edita
+			ini_set( 'display_errors', 1 );
+			error_reporting( E_ALL );
+			$from = "stevenhernandezj@gmail.com";
+			$to = $correo;
+			$subject = "Factura SLTECHNOLOGY CORREGIDO";
+			$message = "$descripcion";
+			$headers = "From:" . $from;
+			mail($to,$subject,$message, $headers);
 		}
     break;
     
@@ -76,7 +97,7 @@ switch ($_GET["op"]){
 						Señor@ usuario, '.$reg->nombres." ".$reg->apellidos.'%0d%0a%0d%0a
 						Con '.$reg->cantidadequipos.' 
 						equipos entrados en la fecha '.$reg->fechaentrada.', que vienen de la direccion '.$reg->direccion.'       
-						 con el problema/configuracion indicada : '.$reg->descripcion.' tendra un valor a cobrar en su totalidad de $'.$reg->valortotal.'
+						 con el problema/configuracion indicada : '.$reg->descripcion.' tendra un valor a cobrar en su totalidad de $'.$reg->valortotal.'&Attachment=/Applications/MAMP/htdocs/sistema/public/images/bg.jpg
 					 "class="btn btn-primary"><i class="fas fa-envelope-square"></i></a>
 
 					 <a href="https://api.whatsapp.com/send?phone=+57

@@ -26,7 +26,9 @@ $email = "stevenhernandezj@gmail.com";
 
 //Obtenemos los datos de la cabecera de la venta actual
 require_once "../modelos/Soporte.php";
+
 $soporte= new Soporte();
+
 $rsptav = $soporte->listar($_GET["id"]);
 //Recorremos todos los valores obtenidos
 $regv = $rsptav->fetch_object();
@@ -51,19 +53,19 @@ $pdf->addClientAdresse(utf8_decode($regv->nombres." ".$regv->apellidos),
 "Correo: ".$regv->correo,
 "Telefono: ".$regv->telefono);
 
-$cols=array( "CODIGO"=>23,
-             "DESCRIPCION"=>78,
-             "CANTIDAD"=>22,
-             "P.U."=>25,
-             "DSCTO"=>20,
-             "SUBTOTAL"=>22);
+$cols=array( "NOMBRES"=>23,
+             "DESCRIPCION"=>60,
+             "TIPO ENTIDAD"=>27,
+             "CORREO"=>25,
+             "TELEFONO"=>24,
+             "TOTAL"=>25);
 $pdf->addCols( $cols);
-$cols=array( "CODIGO"=>"L",
+$cols=array( "NOMBRES"=>"L",
              "DESCRIPCION"=>"L",
-             "CANTIDAD"=>"C",
-             "P.U."=>"R",
-             "DSCTO" =>"R",
-             "SUBTOTAL"=>"C");
+             "TIPO ENTIDAD"=>"C",
+             "CORREO"=>"R",
+             "TELEFONO" =>"R",
+             "TOTAL"=>"C");
 $pdf->addLineFormat( $cols);
 $pdf->addLineFormat($cols);
 $y= 89;
@@ -72,12 +74,12 @@ $y= 89;
 $rsptad = $soporte->listar($_GET["id"]);
 
 while ($regd = $rsptad->fetch_object()) {
-  $line = array( "CODIGO"=> "$regd->cliente",
-                "DESCRIPCION"=> utf8_decode("$regd->direccion"),
-                "CANTIDAD"=> "$regd->identificador",
-                "P.U."=> "$regd->correo",
-                "DSCTO" => "$regd->telefono",
-                "SUBTOTAL"=> "$regd->valortotal");
+  $line = array( "NOMBRES"=> "$regd->nombres",
+                "DESCRIPCION"=> utf8_decode("$regd->descripcion"),
+                "TIPO ENTIDAD"=> "$regd->identificador",
+                "CORREO"=> "$regd->correo",
+                "TELEFONO" => "$regd->telefono",
+                "TOTAL"=> "$regd->valortotal");
             $size = $pdf->addLine( $y, $line );
             $y   += $size + 2;
 }
@@ -86,12 +88,12 @@ while ($regd = $rsptad->fetch_object()) {
 require_once "Letras.php";
 $V=new EnLetras(); 
 $con_letra=strtoupper($V->ValorEnLetras($regv->valortotal,"PESOS COP"));
-$pdf->addCadreTVAs("---".$con_letra);
+$pdf->addCadreTVAs("".$con_letra);
 
 //Mostramos el impuesto
-$pdf->addTVAs( $regv->impuesto, $regv->valortotal,"$ ");
-$pdf->addCadreEurosFrancs("IGV"." $regv->impuesto %");
-$pdf->Output('Reporte de Venta','I');
+$pdf->addTVAs( $regv->impuesto = 19, $regv->valortotal,"$ ");
+$pdf->addCadreEurosFrancs("IVA"." $regv->impuesto %");
+$pdf->Output('Factura de servicio','I');
 
 
 }

@@ -7,7 +7,6 @@ Class Soporte
 	//Implementamos nuestro constructor
 	public function __construct()
 	{
-
 	}
 
 	//Implementamos un método para insertar registros
