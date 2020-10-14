@@ -32,7 +32,7 @@ switch ($_GET["op"]){
 			$ext = explode(".", $_FILES["adjuntar"]["name"]);
 			if ($_FILES['adjuntar']['type'] == "image/jpg" || $_FILES['adjuntar']['type'] == "image/jpeg" || $_FILES['adjuntar']['type'] == "image/png")
 			{
-				$adjuntar = round(microtime(true)) . '.' . end($ext);
+				$adjuntar = $nombres.'-'.$fechaentrada. '.' . end($ext);
 				move_uploaded_file($_FILES["adjuntar"]["tmp_name"], "../files/soporte/" . $adjuntar);
 			}
 		}
@@ -57,19 +57,38 @@ switch ($_GET["op"]){
 	case 'listar':
 		$rspta=$soporte->listar();
  		//Vamos a declarar un array
- 		$data= Array();
+		 $data= Array();
+		 
 
  		while ($reg=$rspta->fetch_object()){
+			if($reg->tipo_comprobante=='Ticket'){
+				$url='../reportes/exTicket.php?id=';
+			}
+			else{
+				$url='../reportes/exFacturaSoporte.php?id=';
+			}
+
  			$data[]=array(
- 				"0"=>($reg->soporte)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idsoporte.')"><i class="fas fa-pencil-alt"></i></button>':
-					 '<button class="btn btn-warning" onclick="mostrar('.$reg->idsoporte.')"><i class="fas fa-pencil-alt"></i></button>
+ 				"0"=>($reg->soporte)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idsoporte.')"><i class="fas fa-pencil-ruler"></i></button>':
+					 '<button class="btn btn-warning" onclick="mostrar('.$reg->idsoporte.')"><i class="fas fa-pencil-ruler"></i></button>
+
 					 <a href="mailto:'.$reg->correo.'?cc=stevenhernandezj@gmail.com&bcc=&subject=Factura SLTECHNOLOGY&body=
-						Señor@ usuario, '.$reg->nombres." ".$reg->apellidos.'
-						%0d%0a%0d%0a
+						Señor@ usuario, '.$reg->nombres." ".$reg->apellidos.'%0d%0a%0d%0a
 						Con '.$reg->cantidadequipos.' 
-						equipos entrados en la fecha '.$reg->fechaentrada.', que vienen de la direccion '.$reg->direccion.'
-					 	con el problema/configuracion indicada : '.$reg->descripcion.' tendra un valor a cobrar en su totalidad de $'.$reg->valortotal.'
-					 "class="btn btn-primary"><i class="fas fa-print"></i></a>',
+						equipos entrados en la fecha '.$reg->fechaentrada.', que vienen de la direccion '.$reg->direccion.'       
+						 con el problema/configuracion indicada : '.$reg->descripcion.' tendra un valor a cobrar en su totalidad de $'.$reg->valortotal.'
+					 "class="btn btn-primary"><i class="fas fa-envelope-square"></i></a>
+
+					 <a href="https://api.whatsapp.com/send?phone=+57
+					 '.$reg->telefono.'&text=Hola, 
+					 '.$reg->nombres." ".$reg->apellidos.'%20qué%20tal?%20te%20enviamos%20la%20factura%20al%20correo:%20
+					 '.$reg->correo.',%20el%20numero%20de%20tu%20servicio%20es,%20
+					 '.$reg->idsoporte.'%20que%20tengas%20un%20buen%20dia%20y%20gracias%20por%20acudir%20a%20nosotros%20SOMOS%20SLTECHNOLOGY. 
+					 "class="btn btn-success"><i class="fab fa-whatsapp"></i></a>
+	
+
+					 <a target="_blank" href="'.$url.$reg->idsoporte.'"> <button class="btn btn-info"><i class="fas fa-file-invoice-dollar"></i></button></a>
+					 ',
                      "1"=>$reg->nombres." ".$reg->apellidos,
                      "2"=>$reg->fechaentrada,
                      "3"=>$reg->direccion,

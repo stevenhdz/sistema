@@ -10,7 +10,7 @@ if (!isset($_SESSION["nombre"]))
 }
 else
 {
-if ($_SESSION['ventas']==1)
+if ($_SESSION['soporte']==1)
 {
 //Incluímos el archivo Factura.php
 require('Factura.php');
@@ -25,9 +25,9 @@ $telefono = "3023571736";
 $email = "stevenhernandezj@gmail.com";
 
 //Obtenemos los datos de la cabecera de la venta actual
-require_once "../modelos/Venta.php";
-$venta= new Venta();
-$rsptav = $venta->ventacabecera($_GET["id"]);
+require_once "../modelos/Soporte.php";
+$soporte= new Soporte();
+$rsptav = $soporte->listar($_GET["id"]);
 //Recorremos todos los valores obtenidos
 $regv = $rsptav->fetch_object();
 
@@ -41,14 +41,16 @@ $pdf->addSociete(utf8_decode($empresa),
                   utf8_decode("Dirección: ").utf8_decode($direccion)."\n".
                   utf8_decode("Teléfono: ").$telefono."\n" .
                   "Email : ".$email,$logo,$ext_logo);
-$pdf->fact_dev( "$regv->tipo_comprobante ", "$regv->serie_comprobante-$regv->num_comprobante" );
+$pdf->fact_dev( "$regv->identificador ", '- Factura #'."$regv->idsoporte" );
 $pdf->temporaire( "" );
-$pdf->addDate( $regv->fecha);
+$pdf->addDate( $regv->fechaentrada);
 
-//Enviamos los datos del cliente al método addClientAdresse de la clase Factura
-$pdf->addClientAdresse(utf8_decode($regv->cliente),"Domicilio: ".utf8_decode($regv->direccion),$regv->tipo_documento.": ".$regv->num_documento,"Email: ".$regv->email,"Telefono: ".$regv->telefono);
+$pdf->addClientAdresse(utf8_decode($regv->nombres." ".$regv->apellidos),
+"Direccion: ".utf8_decode($regv->direccion), 
+"Identificador: ".$regv->identificador,
+"Correo: ".$regv->correo,
+"Telefono: ".$regv->telefono);
 
-//Establecemos las columnas que va a tener la sección donde mostramos los detalles de la venta
 $cols=array( "CODIGO"=>23,
              "DESCRIPCION"=>78,
              "CANTIDAD"=>22,
@@ -64,19 +66,18 @@ $cols=array( "CODIGO"=>"L",
              "SUBTOTAL"=>"C");
 $pdf->addLineFormat( $cols);
 $pdf->addLineFormat($cols);
-//Actualizamos el valor de la coordenada "y", que será la ubicación desde donde empezaremos a mostrar los datos
 $y= 89;
 
-//Obtenemos todos los detalles de la venta actual
-$rsptad = $venta->ventadetalle($_GET["id"]);
+
+$rsptad = $soporte->listar($_GET["id"]);
 
 while ($regd = $rsptad->fetch_object()) {
-  $line = array( "CODIGO"=> "$regd->codigo",
-                "DESCRIPCION"=> utf8_decode("$regd->articulo"),
-                "CANTIDAD"=> "$regd->cantidad",
-                "P.U."=> "$regd->precio_venta",
-                "DSCTO" => "$regd->descuento",
-                "SUBTOTAL"=> "$regd->subtotal");
+  $line = array( "CODIGO"=> "$regd->cliente",
+                "DESCRIPCION"=> utf8_decode("$regd->direccion"),
+                "CANTIDAD"=> "$regd->identificador",
+                "P.U."=> "$regd->correo",
+                "DSCTO" => "$regd->telefono",
+                "SUBTOTAL"=> "$regd->valortotal");
             $size = $pdf->addLine( $y, $line );
             $y   += $size + 2;
 }
@@ -84,11 +85,11 @@ while ($regd = $rsptad->fetch_object()) {
 //Convertimos el total en letras
 require_once "Letras.php";
 $V=new EnLetras(); 
-$con_letra=strtoupper($V->ValorEnLetras($regv->total_venta,"NUEVOS SOLES"));
+$con_letra=strtoupper($V->ValorEnLetras($regv->valortotal,"PESOS COP"));
 $pdf->addCadreTVAs("---".$con_letra);
 
 //Mostramos el impuesto
-$pdf->addTVAs( $regv->impuesto, $regv->total_venta,"S/ ");
+$pdf->addTVAs( $regv->impuesto, $regv->valortotal,"$ ");
 $pdf->addCadreEurosFrancs("IGV"." $regv->impuesto %");
 $pdf->Output('Reporte de Venta','I');
 
@@ -97,8 +98,8 @@ $pdf->Output('Reporte de Venta','I');
 else
 {
   echo 'No tiene permiso para visualizar el reporte';
-}
 
+}
 }
 ob_end_flush();
 ?>

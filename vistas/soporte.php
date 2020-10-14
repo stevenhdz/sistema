@@ -33,7 +33,7 @@ if ($_SESSION['soporte']==1)
           <div class="panel-body table-responsive" id="listadoregistros">
             <table id="tbllistado" class="table-fix table-striped table-bordered table-condensed table-hover">
               <thead>
-                <th>Acciones</th>
+                <th>Acciones Preferidas por el usuario</th>
                 <th>Nombres</th>
                 <th>Fecha Entrada</th>
                 <th>Direccion</th>
@@ -51,7 +51,7 @@ if ($_SESSION['soporte']==1)
               <tbody>
               </tbody>
               <tfoot>
-                <th>Acciones</th>
+              <th>Acciones Preferidas por el usuario</th>
                 <th>Nombres</th>
                 <th>Fecha Entrada</th>
                 <th>Direccion</th>
@@ -95,7 +95,7 @@ if ($_SESSION['soporte']==1)
                     <label>Telefono:</label>
                     <input type="text" class="form-control" name="telefono" id="telefono" maxlength="256"
                       placeholder="Telefono">
-                      <!-- <input type="text" class="form-control" name="telefono" id="telefono" maxlength="256"
+                    <!-- <input type="text" class="form-control" name="telefono" id="telefono" maxlength="256"
                       placeholder="Telefono" pattern="[A-Za-z]{3,100}" required oninput="check_text(this);">
                       <script type="text/javascript">
                         function check_text(input) {  
@@ -175,25 +175,25 @@ if ($_SESSION['soporte']==1)
               </div>
               <div class="container-fluid">
                 <div class="row">
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Correo:</label>
-                    <input type="email" class="form-control" name="correo" id="correo"
-                      maxlength="256" placeholder="Correo" required>
+                    <input type="email" class="form-control" name="correo" id="correo" maxlength="256"
+                      placeholder="Correo" required>
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Respuesta:</label>
                     <input type="text" class="form-control" name="respuesta" id="respuesta" maxlength="256"
                       placeholder="Respuesta">
                   </div>
-                      </div>
-                      </div>
+                </div>
+              </div>
               <div class="container-fluid">
                 <div class="row">
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Descripcion:</label>
                     <input type="text" class="form-control" name="descripcion" id="descripcion"
                       placeholder="Descripción" rows="2" cols="4">
-                      <!-- trix editor -->
+                    <!-- trix editor -->
                     <trix-editor input="descripcion" type="text" class="form-control" placeholder="Descripción">
                     </trix-editor>
                   </div>
