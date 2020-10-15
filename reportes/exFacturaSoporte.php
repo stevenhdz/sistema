@@ -13,7 +13,7 @@ else
 if ($_SESSION['soporte']==1)
 {
 //Incluímos el archivo Factura.php
-require('Factura.php');
+require('FacturaSoporte.php');
 
 //Establecemos los datos de la empresa
 $logo = "mascara.png";
@@ -29,7 +29,7 @@ require_once "../modelos/Soporte.php";
 
 $soporte= new Soporte();
 
-$rsptav = $soporte->listar($_GET["id"]);
+$rsptav = $soporte->listar1($_GET["id"]);
 //Recorremos todos los valores obtenidos
 $regv = $rsptav->fetch_object();
 
@@ -43,11 +43,13 @@ $pdf->addSociete(utf8_decode($empresa),
                   utf8_decode("Dirección: ").utf8_decode($direccion)."\n".
                   utf8_decode("Teléfono: ").$telefono."\n" .
                   "Email : ".$email,$logo,$ext_logo);
-$pdf->fact_dev( "$regv->identificador ", '- Factura #'."$regv->idsoporte" );
+
+$pdf->fact_dev( "$regv->nombres $regv->apellidos", '- Factura #'."$regv->idsoporte" );
 $pdf->temporaire( "" );
 $pdf->addDate( $regv->fechaentrada);
 
-$pdf->addClientAdresse(utf8_decode($regv->nombres." ".$regv->apellidos),
+$pdf->addClientAdresse(
+"Nombres: ".utf8_decode($regv->nombres." ".$regv->apellidos),
 "Direccion: ".utf8_decode($regv->direccion), 
 "Identificador: ".$regv->identificador,
 "Correo: ".$regv->correo,
@@ -71,10 +73,10 @@ $pdf->addLineFormat($cols);
 $y= 89;
 
 
-$rsptad = $soporte->listar($_GET["id"]);
+$rsptad = $soporte->listar1($_GET["id"]);
 
 while ($regd = $rsptad->fetch_object()) {
-  $line = array( "NOMBRES"=> "$regd->nombres",
+  $line = array( "NOMBRES"=> "$regd->nombres $regd->apellidos",
                 "DESCRIPCION"=> utf8_decode("$regd->descripcion"),
                 "TIPO ENTIDAD"=> "$regd->identificador",
                 "CORREO"=> "$regd->correo",

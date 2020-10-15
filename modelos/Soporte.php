@@ -39,6 +39,11 @@ Class Soporte
 	}
 	
 
+	public function listar1($idsoporte){
+		$sql="SELECT * FROM soporte WHERE idsoporte='$idsoporte'";
+		return ejecutarConsulta($sql);
+	}
+
 	
 }
 

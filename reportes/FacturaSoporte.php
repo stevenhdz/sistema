@@ -251,7 +251,7 @@ function addPageNumber( $page )
 }
 
 // Client address
-function addClientAdresse( $soporte,$direccion,$identificador,$correo,$telefono )
+function addClientAdresse( $nombres,$direccion,$identificador,$correo,$telefono )
 {
 	$r1     = $this->w - 180;
 	$r2     = $r1 + 68;
@@ -261,7 +261,7 @@ function addClientAdresse( $soporte,$direccion,$identificador,$correo,$telefono 
 	$this->MultiCell( 60, 4, "SOPORTE");
 	$this->SetXY( $r1, $y1+5);
 	$this->SetFont( "Arial", "", 10);
-	$this->MultiCell( 150, 4, $cliente);
+	$this->MultiCell( 150, 4, $nombres);
 	$this->SetXY( $r1, $y1+10);
 	$this->MultiCell( 150, 4, $direccion);
 	$this->SetXY( $r1, $y1+15);
