@@ -1,34 +1,41 @@
 <?php
-require_once "../modelos/Soporte.php";
 
-$soporte=new Soporte();
+require_once "../modelos/PHPMailer.php";
+require_once "../modelos/SMTP.php";
+require_once "../modelos/Exception.php";
+require_once "../modelos/OAuth.php";
+require_once "../modelos/POP3.php";
 
-$idsoporte=isset($_POST["idsoporte"])? limpiarCadena($_POST["idsoporte"]):"";
-$nombres=isset($_POST["nombres"])? limpiarCadena($_POST["nombres"]):"";
-$apellidos=isset($_POST["apellidos"])? limpiarCadena($_POST["apellidos"]):"";
-$fechaentrada=isset($_POST["fechaentrada"])? limpiarCadena($_POST["fechaentrada"]):"";
-$direccion=isset($_POST["direccion"])? limpiarCadena($_POST["direccion"]):"";
-$cantidadequipos=isset($_POST["cantidadequipos"])? limpiarCadena($_POST["cantidadequipos"]):"";
-$valortotal=isset($_POST["valortotal"])? limpiarCadena($_POST["valortotal"]):"";
-$identificador=isset($_POST["identificador"])? limpiarCadena($_POST["identificador"]):"";
-$correo=isset($_POST["correo"])? limpiarCadena($_POST["correo"]):"";
-$respuesta=isset($_POST["respuesta"])? limpiarCadena($_POST["respuesta"]):"";
-$telefono=isset($_POST["telefono"])? limpiarCadena($_POST["telefono"]):"";
-$tipopago=isset($_POST["tipopago"])? limpiarCadena($_POST["tipopago"]):"";
-$descripcion=isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):"";
-$valorunidad=isset($_POST["valorunidad"])? limpiarCadena($_POST["valorunidad"]):"";
-$adjuntar=isset($_POST["adjuntar"])? limpiarCadena($_POST["adjuntar"]):"";
+$mail = new PHPMailer;
 
-    ini_set( 'display_errors', 1 );
-    error_reporting( E_ALL );
-    $from = "stevenhernandezj@gmail.com";
-    $to = $correo;
-    $subject = "Checking PHP mail";
-    $message = "PHP mail works just fine";
-    $headers = "From:" . $from;
-    mail($to,$subject,$message, $headers);
-    echo "The email message was sent.";
+$mail->isSMTP();                                      // Set mailer to use SMTP
+$mail->Host = 'smtp1.example.com;smtp2.example.com';  // Specify main and backup SMTP servers
+$mail->SMTPAuth = true;                               // Enable SMTP authentication
+$mail->Username = 'user@example.com';                 // SMTP username
+$mail->Password = 'secret';                           // SMTP password
+$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 
+$mail->From = 'from@example.com';
+$mail->FromName = 'Mailer';
+$mail->addAddress('joe@example.net', 'Joe User');     // Add a recipient
+$mail->addAddress('ellen@example.com');               // Name is optional
+$mail->addReplyTo('info@example.com', 'Information');
+$mail->addCC('cc@example.com');
+$mail->addBCC('bcc@example.com');
 
- 
+$mail->WordWrap = 50;                                 // Set word wrap to 50 characters
+$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+$mail->isHTML(true);                                  // Set email format to HTML
+
+$mail->Subject = 'Here is the subject';
+$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+if(!$mail->send()) {
+    echo 'Message could not be sent.';
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+} else {
+    echo 'Message has been sent';
+}
 ?>

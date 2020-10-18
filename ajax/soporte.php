@@ -38,32 +38,50 @@ switch ($_GET["op"]){
 		}
 		if (empty($idsoporte)){
 			$rspta=$soporte->insertar($nombres,$apellidos,$fechaentrada,$direccion,$cantidadequipos,$valortotal= $valorunidad * $cantidadequipos,$identificador,$correo,$respuesta,$telefono,$tipopago,$descripcion,$valorunidad,$adjuntar);
-			echo $rspta ? "Soporte registrado" : "Soporte no se pudo registrar";
+			echo $rspta ? "Registrado" : "No se pudo registrar";
 
 			//TODO: ENVIAR CORREO 
 			ini_set( 'display_errors', 1 );
 			error_reporting( E_ALL );
 			$from = "stevenhernandezj@gmail.com";
 			$to = $correo;
-			$subject = "Factura SLTECHNOLOGY";
+			$subject = "FACTURA SLTECHNOLOGY";
 			$message = "$descripcion";
-			$headers = "From:" . $from;
-			$files = "../files/soporte/".$adjuntar;
-			mail($to,$subject,$message, $headers, $files);
+			$headers = "From:" . $from. "\r\n" .'X-Mailer: PHP/' . phpversion();
+			$headers .= "MIME-Version: 1.0\r\n";
+			$headers .= "Content-type: text/html\r\n";
+			if (mail($to,$subject,$message, $headers))
+				{
+					echo " mensaje enviado";
+				}
+				else
+				{
+					echo " Error: mensaje no enviado";
+				}
+			
 		}
 		else {
 			$rspta=$soporte->editar($idsoporte,$nombres,$apellidos,$fechaentrada,$direccion,$cantidadequipos,$valortotal= $valorunidad * $cantidadequipos,$identificador,$correo,$respuesta,$telefono,$tipopago,$descripcion,$valorunidad,$adjuntar);
-			echo $rspta ? "Soporte actualizado" : "Soporte no se pudo actualizar";
+			echo $rspta ? "Registro actualizado" : "Registro no actualizado";
 
 			//TODO: ENVIAR CORREO si edita
 			ini_set( 'display_errors', 1 );
 			error_reporting( E_ALL );
 			$from = "stevenhernandezj@gmail.com";
 			$to = $correo;
-			$subject = "Factura SLTECHNOLOGY CORREGIDO";
+			$subject = "FACTURA SLTECHNOLOGY COPIA";
 			$message = "$descripcion";
-			$headers = "From:" . $from;
-			mail($to,$subject,$message, $headers);
+			$headers = "From:" . $from.'X-Mailer: PHP/' . phpversion();
+			$headers .= "MIME-Version: 1.0\r\n";
+         	$headers .= "Content-type: text/html\r\n";
+			if (mail($to,$subject,$message, $headers))
+					{
+						echo " mensaje enviado";
+					}
+					else
+					{
+						echo " Error: mensaje no enviado";
+					}
 		}
     break;
     
