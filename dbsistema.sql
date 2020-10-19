@@ -1,20 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.9.3
+-- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 30-06-2017 a las 06:01:45
--- Versión del servidor: 10.1.9-MariaDB
--- Versión de PHP: 5.6.15
+-- Servidor: localhost:8889
+-- Tiempo de generación: 19-10-2020 a las 06:02:48
+-- Versión del servidor: 5.7.26
+-- Versión de PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `dbsistema`
@@ -37,6 +31,14 @@ CREATE TABLE `articulo` (
   `condicion` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `articulo`
+--
+
+INSERT INTO `articulo` (`idarticulo`, `idcategoria`, `codigo`, `nombre`, `stock`, `descripcion`, `imagen`, `condicion`) VALUES
+(1, 1, '1', 'hola', 39, 'dd', '1601955731.png', 1),
+(2, 1, '334', 'pc', 1, 'ss', '1602174765.jpg', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +51,13 @@ CREATE TABLE `categoria` (
   `descripcion` varchar(256) DEFAULT NULL,
   `condicion` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`idcategoria`, `nombre`, `descripcion`, `condicion`) VALUES
+(1, 'Alexander', 'ss', 1);
 
 -- --------------------------------------------------------
 
@@ -64,6 +73,19 @@ CREATE TABLE `detalle_ingreso` (
   `precio_compra` decimal(11,2) NOT NULL,
   `precio_venta` decimal(11,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `detalle_ingreso`
+--
+
+INSERT INTO `detalle_ingreso` (`iddetalle_ingreso`, `idingreso`, `idarticulo`, `cantidad`, `precio_compra`, `precio_venta`) VALUES
+(1, 1, 1, 1, '1.00', '1.00'),
+(2, 1, 1, 1, '1.00', '1.00'),
+(3, 1, 1, 1, '1.00', '1.00'),
+(4, 1, 1, 1, '1.00', '1.00'),
+(5, 1, 1, 1, '1.00', '1.00'),
+(6, 1, 1, 1, '1.00', '1.00'),
+(7, 1, 1, 1, '1.00', '1.00');
 
 --
 -- Disparadores `detalle_ingreso`
@@ -90,6 +112,14 @@ CREATE TABLE `detalle_venta` (
   `precio_venta` decimal(11,2) NOT NULL,
   `descuento` decimal(11,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `detalle_venta`
+--
+
+INSERT INTO `detalle_venta` (`iddetalle_venta`, `idventa`, `idarticulo`, `cantidad`, `precio_venta`, `descuento`) VALUES
+(1, 1, 1, 1, '34.00', '0.00'),
+(2, 2, 1, 1, '1.00', '0.00');
 
 --
 -- Disparadores `detalle_venta`
@@ -121,6 +151,13 @@ CREATE TABLE `ingreso` (
   `estado` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `ingreso`
+--
+
+INSERT INTO `ingreso` (`idingreso`, `idproveedor`, `idusuario`, `tipo_comprobante`, `serie_comprobante`, `num_comprobante`, `fecha_hora`, `impuesto`, `total_compra`, `estado`) VALUES
+(1, 2, 1, 'Boleta', '3', '3', '2020-10-06 00:00:00', '45.00', '7.00', 'Aceptado');
+
 -- --------------------------------------------------------
 
 --
@@ -143,7 +180,9 @@ INSERT INTO `permiso` (`idpermiso`, `nombre`) VALUES
 (4, 'Ventas'),
 (5, 'Acceso'),
 (6, 'Consulta Compras'),
-(7, 'Consulta Ventas');
+(7, 'Consulta Ventas'),
+(8, 'Chat'),
+(9, 'Soporte');
 
 -- --------------------------------------------------------
 
@@ -161,6 +200,46 @@ CREATE TABLE `persona` (
   `telefono` varchar(20) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `persona`
+--
+
+INSERT INTO `persona` (`idpersona`, `tipo_persona`, `nombre`, `tipo_documento`, `num_documento`, `direccion`, `telefono`, `email`) VALUES
+(1, 'Cliente', 'f', 'DNI', '33', 'dd', '44', 'stevenhernandezj@gmail.com'),
+(2, 'Proveedor', 'Alexander', 'DNI', '47715778', 'calle 116a', '931742904', 'stevenhernandezj@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `soporte`
+--
+
+CREATE TABLE `soporte` (
+  `idsoporte` int(11) NOT NULL,
+  `nombres` varchar(100) NOT NULL,
+  `apellidos` varchar(100) NOT NULL,
+  `fechaentrada` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `direccion` varchar(100) NOT NULL,
+  `cantidadequipos` int(255) NOT NULL,
+  `valortotal` varchar(50) NOT NULL,
+  `identificador` varchar(50) NOT NULL,
+  `respuesta` varchar(50) NOT NULL,
+  `telefono` varchar(50) NOT NULL,
+  `tipopago` varchar(50) NOT NULL,
+  `descripcion` varchar(2500) NOT NULL,
+  `valorunidad` decimal(11,0) NOT NULL,
+  `adjuntar` varchar(50) NOT NULL,
+  `correo` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `soporte`
+--
+
+INSERT INTO `soporte` (`idsoporte`, `nombres`, `apellidos`, `fechaentrada`, `direccion`, `cantidadequipos`, `valortotal`, `identificador`, `respuesta`, `telefono`, `tipopago`, `descripcion`, `valorunidad`, `adjuntar`, `correo`) VALUES
+(56, 'wwewe', 'que', '2020-10-17 07:54:00', 'quejjjj', 12, '413334663996', 'Persona natural', '334444', '3023571736', 'Efectivo', '&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;lt;div&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;gt;hhh&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;lt;/div&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;gt;', '34444555333', 'wwewe-2020-10-17T02:541837863485.jpg', 'xela872@gmail.com'),
+(57, 'Stevenffe', 'hernandez Jimenezfssss', '2020-10-17 08:07:00', 'calle 116', 37730033, '792330705526370956', 'Persona natural', 'ddddhhkododksdkskodksodksd', '3023571736', 'Efectivo', '&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;lt;div&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;gt;ss&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;lt;/div&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;gt;', '21000000332', 'Stevenffe-2020-10-17T03:07588134923.jpg', 'stevenhernandezj@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -188,7 +267,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idusuario`, `nombre`, `tipo_documento`, `num_documento`, `direccion`, `telefono`, `email`, `cargo`, `login`, `clave`, `imagen`, `condicion`) VALUES
-(1, 'Juan Carlos Arcila', 'DNI', '47715777', 'Jose Gálvez 1368 - Chongoyape', '931742904', '', '', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', '1487132068.jpg', 1);
+(1, 'Steven Alexander hernandez', 'CEDULA', '4626508', 'calle 116a', '3023571736', 'stevenhernandezj@gmail.com', 'Admin', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', '1602969637.jpg', 1),
+(3, 'Alexander Torres', 'CEDULA', '47715778', 'Jose Gálvez 1368 - Chongoyape', '931742904', 'stevenhernandezj@gmail.com', 'Analista', 'admin1', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', '1601756043.jpg', 1),
+(4, '', '', '', '', '', '', '', '', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', '', 0);
 
 -- --------------------------------------------------------
 
@@ -207,13 +288,17 @@ CREATE TABLE `usuario_permiso` (
 --
 
 INSERT INTO `usuario_permiso` (`idusuario_permiso`, `idusuario`, `idpermiso`) VALUES
-(96, 1, 1),
-(97, 1, 2),
-(98, 1, 3),
-(99, 1, 4),
-(100, 1, 5),
-(101, 1, 6),
-(102, 1, 7);
+(233, 3, 8),
+(234, 3, 9),
+(313, 1, 1),
+(314, 1, 2),
+(315, 1, 3),
+(316, 1, 4),
+(317, 1, 5),
+(318, 1, 6),
+(319, 1, 7),
+(320, 1, 8),
+(321, 1, 9);
 
 -- --------------------------------------------------------
 
@@ -233,6 +318,14 @@ CREATE TABLE `venta` (
   `total_venta` decimal(11,2) NOT NULL,
   `estado` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `venta`
+--
+
+INSERT INTO `venta` (`idventa`, `idcliente`, `idusuario`, `tipo_comprobante`, `serie_comprobante`, `num_comprobante`, `fecha_hora`, `impuesto`, `total_venta`, `estado`) VALUES
+(1, 1, 1, 'Boleta', '2', '22', '2020-10-05 00:00:00', '12.00', '34.00', 'Anulado'),
+(2, 1, 1, 'Boleta', '2', '22', '2020-10-14 00:00:00', '19.00', '1.00', 'Aceptado');
 
 --
 -- Índices para tablas volcadas
@@ -290,6 +383,12 @@ ALTER TABLE `persona`
   ADD PRIMARY KEY (`idpersona`);
 
 --
+-- Indices de la tabla `soporte`
+--
+ALTER TABLE `soporte`
+  ADD PRIMARY KEY (`idsoporte`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -320,52 +419,68 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de la tabla `articulo`
 --
 ALTER TABLE `articulo`
-  MODIFY `idarticulo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idarticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `idcategoria` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT de la tabla `detalle_ingreso`
 --
 ALTER TABLE `detalle_ingreso`
-  MODIFY `iddetalle_ingreso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `iddetalle_ingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT de la tabla `detalle_venta`
 --
 ALTER TABLE `detalle_venta`
-  MODIFY `iddetalle_venta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `iddetalle_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT de la tabla `ingreso`
 --
 ALTER TABLE `ingreso`
-  MODIFY `idingreso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idingreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT de la tabla `permiso`
 --
 ALTER TABLE `permiso`
-  MODIFY `idpermiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idpermiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `idpersona` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idpersona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `soporte`
+--
+ALTER TABLE `soporte`
+  MODIFY `idsoporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT de la tabla `usuario_permiso`
 --
 ALTER TABLE `usuario_permiso`
-  MODIFY `idusuario_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `idusuario_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=322;
+
 --
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `idventa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idventa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- Restricciones para tablas volcadas
 --
@@ -410,7 +525,3 @@ ALTER TABLE `usuario_permiso`
 ALTER TABLE `venta`
   ADD CONSTRAINT `fk_venta_persona` FOREIGN KEY (`idcliente`) REFERENCES `persona` (`idpersona`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_venta_usuario` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

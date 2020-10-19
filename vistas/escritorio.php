@@ -13,6 +13,7 @@ require 'header.php';
 
 if ($_SESSION['escritorio']==1)
 {
+
   require_once "../modelos/Consultas.php";
   $consulta = new Consultas();
   $rsptac = $consulta->totalcomprahoy();
@@ -74,7 +75,7 @@ if ($_SESSION['escritorio']==1)
                               <div class="icon">
                                 <i class="ion ion-bag"></i>
                               </div>
-                              <a href="ingreso.php" class="small-box-footer">Compras <i class="fa fa-arrow-circle-right"></i></a>
+                              <a href="../vistas/ingreso.php" class="small-box-footer">Compras <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -88,7 +89,7 @@ if ($_SESSION['escritorio']==1)
                               <div class="icon">
                                 <i class="ion ion-bag"></i>
                               </div>
-                              <a href="venta.php" class="small-box-footer">Ventas <i class="fa fa-arrow-circle-right"></i></a>
+                              <a href="../vistas/venta.php" class="small-box-footer">Ventas <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -122,28 +123,28 @@ if ($_SESSION['escritorio']==1)
 
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
-<?php
+  <?php
 }
 else
 {
   require 'noacceso.php';
 }
-
 require 'footer.php';
 ?>
-<!-- //chart para estadisticas -->
-<script src="../public/js/Chart.min.js"></script>
-<script src="../public/js/Chart.bundle.min.js"></script>
-<script type="text/javascript">
 
+
+<!-- //chart para estadisticas -->
+<script type="text/javascript" src="../public/js/Chart.js"></script>
+<script  type="text/javascript" src="../public/js/Chart.bundle.min.js"></script> 
+<script type="text/javascript">
 var ctx = document.getElementById("compras").getContext('2d');
 var compras = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: [<?php echo $fechasc; ?>],
+        labels: ["18-10","15-10","1-10","13-9"],
         datasets: [{
-            label: '# Compras en S/ de los últimos 10 días',
-            data: [<?php echo $totalesc; ?>],
+            label: 'Compras en S/ de los últimos 10 días',
+            data: [416.00,1.00,2.00,200.00],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -182,16 +183,14 @@ var compras = new Chart(ctx, {
     }
 });
 
-
-
 var ctx = document.getElementById("ventas").getContext('2d');
 var ventas = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: [<?php echo $fechasv; ?>],
+        labels: ["October","September","December"],
         datasets: [{
-            label: '# Ventas en S/ de los últimos 12 meses',
-            data: [<?php echo $totalesv; ?>],
+            label: 'Ventas en S/ de los últimos 12 Meses',
+            data: [501.35,1.00,1500.00],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -202,9 +201,7 @@ var ventas = new Chart(ctx, {
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(75, 192, 192, 0.2)'
             ],
             borderColor: [
                 'rgba(255,99,132,1)',
@@ -216,9 +213,7 @@ var ventas = new Chart(ctx, {
                 'rgba(255,99,132,1)',
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(75, 192, 192, 1)'
             ],
             borderWidth: 1
         }]
@@ -234,7 +229,6 @@ var ventas = new Chart(ctx, {
     }
 });
 </script>
-</script> 
 <?php 
 }
 ob_end_flush();
