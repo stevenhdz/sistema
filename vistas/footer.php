@@ -9,6 +9,9 @@
     </div>
     <strong>© 2020 <a href="">SLTECHNOLOGY</a>, Inc.</strong>
 </footer>
+<!-- traductor -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="../public/js/JqueryTranslator.js" charset="utf-8"></script>
 <!-- jQuery 3.1.1 -->
 <script src="../public/js/jquery-3.1.1.min.js"></script>
 <!-- Popper -->

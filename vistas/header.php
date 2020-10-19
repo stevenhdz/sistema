@@ -8,7 +8,7 @@ if(strlen(session_id())< 1)
 
 <!-- en ajax se realiza los if por orden -->
 <!DOCTYPE html>
-<html>
+<html lenguaje="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,19 +66,19 @@ if(strlen(session_id())< 1)
           <!-- Navbar Right Menu -->
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-              <!-- Messages: style can be found in dropdown.less-->
+              
               
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <!-- traido desde ajax -->
                   <img src="../files/usuarios/<?php echo $_SESSION['imagen'];?>" class="user-image" alt="User Image">
-                  <span class="hidden-xs"><?php echo $_SESSION['nombre'];?></span>
+                  <!-- <span class="hidden-xs"><?php echo $_SESSION['nombre'];?></span> -->
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                  <img src="../files/usuarios/<?php echo $_SESSION['imagen'];?>" class="user-image" alt="User Image">
+                  <img src="../files/usuarios/<?php echo $_SESSION['imagen'];?>" width="100" height="100" class="user-image" alt="User Image">
                     <p>
                       Cuenta: <span class="hidden-xs"><?php echo $_SESSION['nombre'];?></span>
                       <small><span class="hidden-xs"><?php echo $_SESSION['cargo'];?></span></small>
@@ -92,12 +92,32 @@ if(strlen(session_id())< 1)
                     
                     <div class="pull-right">
                       <a href="../ajax/usuario.php?op=mostrar(1)" class="btn btn-default btn-flat"><i class="fa fa-key" aria-hidden="true"></i>Contraseña</a>
-                      <a href="../ajax/usuario.php?op=salir" class="btn btn-default btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i>
-Cerrar sesion</a>
+                      <a href="../ajax/usuario.php?op=salir" class="btn btn-default btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i>Cerrar sesion</a>
                     </div>
                   </li>
                 </ul>
               </li>
+
+              <!-- Idioms-->
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle pull-right" data-toggle="dropdown">
+                  <!-- traido desde ajax -->
+                  <span class="hidden-xs lenguaje" key="Idioms"><?php echo Idioms;?></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- User image -->
+                  <!-- Menu Footer-->
+                  <li class="user-footer">    
+                    <div class="pull-left">
+                      <button class="translate" id="es"><img src="../public/images/spain.png" width="30" height="30"></button>
+                      <button class="translate" id="en"><img src="../public/images/usa.png" width="30" height="30"></button>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <!-- fin idioms -->
+
+             
               
             </ul>
           </div>

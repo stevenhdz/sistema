@@ -1,0 +1,44 @@
+{
+    
+    "es":{
+        "Actions":"Acciones",
+        "Form Support":"Formulario Soporte",
+        "Mail":"Correo",
+        "Idioms":"Idiomas",
+        "Name":"Nombres(*)",
+        "Last Names": "Apellidos(*)",
+        "Admission Date": "Fecha Entrada(*)",
+        "Cell Phone": "Celular",
+        "Address": "Direccion",
+        "Payment Type": "Tipo de pago",
+        "Number of Computer Equipment":"Numero de equipos de computo",
+        "Total to Pay":"Total a pagar",
+        "Unit Value":"Valor unidad",
+        "Identifier":"Identificador",
+        "Description":"Descripcion",
+        "Answer":"Respuesta",
+        "Attach":"Adjuntar"
+    },
+
+   
+    "en":{
+        "Actions":"Actions",
+        "Form Support":"Form Support",
+        "Mail":"Mail",
+        "Idioms":"Idioms",
+        "Name":"Names(*)",
+        "Last Names": "Last Names(*)",
+        "Admission Date": "Admission Date(*)",
+        "Cell Phone": "Cell Phone",
+        "Address": "Address",
+        "Payment Type": "Payment Type",
+        "Number of Computer Equipment":"Number of Computer Equipment",
+        "Total to Pay":"Total to Pay",
+        "Unit Value": "Unit value",
+        "Identifier":"Identifier",
+        "Description":"Description",
+        "Answer":"Answer",
+        "Attach":"Attach"
+
+    }
+}

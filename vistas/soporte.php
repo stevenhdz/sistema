@@ -22,9 +22,9 @@ if ($_SESSION['soporte']==1)
       <div class="col-md-12">
         <div class="box">
           <div class="box-header with-border">
-            <h1 class="box-title">Soporte <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i
+            <h1 class="box-title lenguaje" key="Form Support">Soporte</h1>
+            <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i
                   class="fa fa-plus-circle"></i> Agregar</button>
-            </h1>
             <div class="box-tools pull-right">
             </div>
           </div>
@@ -33,38 +33,38 @@ if ($_SESSION['soporte']==1)
           <div class="panel-body table-responsive" id="listadoregistros">
             <table id="tbllistado" class="table-fix table-striped table-bordered table-condensed table-hover">
               <thead>
-                <th>Acciones Preferidas por el usuario</th>
-                <th>Nombres</th>
-                <th>Fecha Entrada</th>
-                <th>Direccion</th>
-                <th>Cantidad equipos</th>
-                <th>Total a cobrar</th>
-                <th>Identidad</th>
-                <th>Correo</th>
-                <th>Respuesta</th>
-                <th>Contacto</th>
-                <th>Medio de pago</th>
-                <th>Descripcion</th>
-                <th>Precio individual</th>
-                <th>Visor</th>
+                <th class="lenguaje" key="Actions">Acciones Preferidas por el usuario</th>
+                <th class="lenguaje" key="Name">Nombres</th>
+                <th class="lenguaje" key="Admission Date">Fecha Entrada</th>
+                <th class="lenguaje" key="Address">Direccion</th>
+                <th class="lenguaje" key="Number of Computer Equipment">Cantidad equipos</th>
+                <th class="lenguaje" key="Total to Pay">Total a cobrar</th>
+                <th class="lenguaje" key="Identifier">Identidad</th>
+                <th class="lenguaje" key="Mail">Correo</th>
+                <th class="lenguaje" key="Answer">Respuesta</th>
+                <th class="lenguaje" key="Cell Phone">Contacto</th>
+                <th class="lenguaje" key="Payment Type">Medio de pago</th>
+                <th class="lenguaje" key="Description">Descripcion</th>
+                <th class="lenguaje" key="Unit Value">Precio individual</th>
+                <th class="lenguaje" key="Visor">Visor</th>
               </thead>
               <tbody>
               </tbody>
               <tfoot>
-              <th>Acciones Preferidas por el usuario</th>
-                <th>Nombres</th>
-                <th>Fecha Entrada</th>
-                <th>Direccion</th>
-                <th>Cantidad equipos</th>
-                <th>Total a cobrar</th>
-                <th>Identidad</th>
-                <th>Correo</th>
-                <th>Respuesta</th>
-                <th>Contacto</th>
-                <th>Medio de pago</th>
-                <th>Descripcion</th>
-                <th>Precio individual</th>
-                <th>Visor</th>
+                <th class="lenguaje" key="Actions">>Acciones Preferidas por el usuario</th>
+                <th class="lenguaje" key="Name">Nombres</th>
+                <th class="lenguaje" key="Admission Date">Fecha Entrada</th>
+                <th class="lenguaje" key="Address">Direccion</th>
+                <th class="lenguaje" key="Number of Computer Equipment">Cantidad equipos</th>
+                <th class="lenguaje" key="Total to Pay">Total a cobrar</th>
+                <th class="lenguaje" key="Identifier">Identidad</th>
+                <th class="lenguaje" key="Mail">Correo</th>
+                <th class="lenguaje" key="Answer">Respuesta</th>
+                <th class="lenguaje" key="Cell Phone">Contacto</th>
+                <th class="lenguaje" key="Payment Type">Medio de pago</th>
+                <th class="lenguaje" key="Description">Descripcion</th>
+                <th class="lenguaje" key="Unit Value">Precio individual</th>
+                <th class="lenguaje" key="Visor">Visor</th>
               </tfoot>
             </table>
           </div>
@@ -73,13 +73,13 @@ if ($_SESSION['soporte']==1)
               <div class="container-fluid">
                 <div class="row">
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Nombre(*):</label>
+                    <label class="lenguaje" key="Name">Nombre(*):</label>
                     <input type="hidden" name="idsoporte" id="idsoporte">
                     <input type="text" class="form-control" name="nombres" id="nombres" minlength="3" maxlength="100"
                       placeholder="Nombres" required>
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Apellidos(*):</label>
+                    <label class="lenguaje" key="Last Names">Apellidos(*):</label>
                     <input type="text" class="form-control" name="apellidos" id="apellidos" maxlength="256"
                       placeholder="Apellidos" required>
                   </div>
@@ -88,11 +88,11 @@ if ($_SESSION['soporte']==1)
               <div class="container-fluid">
                 <div class="row">
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Fecha Entrada(*):</label>
+                    <label class="lenguaje" key="Admission Date">Fecha Entrada(*):</label>
                     <input type="datetime-local" class="form-control" name="fechaentrada" id="fechaentrada" required>
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Telefono:</label>
+                    <label class="lenguaje" key="Cell Phone">Telefono:</label>
                     <input type="text" class="form-control" name="telefono" id="telefono" maxlength="256"
                       placeholder="Telefono">
                     <!-- <input type="text" class="form-control" name="telefono" id="telefono" maxlength="256"
@@ -113,12 +113,12 @@ if ($_SESSION['soporte']==1)
               <div class="container-fluid">
                 <div class="row">
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Direccion:</label>
+                    <label class="lenguaje" key="Address">Direccion:</label>
                     <input type="text" class="form-control" name="direccion" id="direccion" maxlength="256"
                       placeholder="Direccion">
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Tipo Pago:</label>
+                    <label class="lenguaje" key="Payment Type">Tipo Pago:</label>
 
 
                     <div class="input-group mb-3">
@@ -139,12 +139,12 @@ if ($_SESSION['soporte']==1)
               <div class="container-fluid">
                 <div class="row">
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Cantidad Equipos:</label>
+                    <label class="lenguaje" key="Number of Computer Equipment">Cantidad Equipos:</label>
                     <input type="number" class="form-control" name="cantidadequipos" id="cantidadequipos"
                       maxlength="256" placeholder="CantidadEquipos" required>
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Total a cobrar:</label>
+                    <label class="lenguaje" key="Total to Pay">Total a cobrar:</label>
                     <input type="text" class="form-control" name="valortotal" id="valortotal" maxlength="256"
                       placeholder="Valortotal">
                   </div>
@@ -153,12 +153,12 @@ if ($_SESSION['soporte']==1)
               <div class="container-fluid">
                 <div class="row">
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Valor Unidad:</label>
+                    <label class="lenguaje" key="Unit Value">Valor Unidad:</label>
                     <input type="text" class="form-control" name="valorunidad" id="valorunidad" maxlength="256"
                       placeholder="Valorunidad">
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Identificador:</label>
+                    <label class="lenguaje" key="Identifier">Identificador:</label>
                     <div class="input-group mb-3">
                       <select type="text" class="form-control" name="identificador" id="identificador" maxlength="256"
                         placeholder="Identificador" class="custom-select" id="inputGroupSelect02">
@@ -176,12 +176,12 @@ if ($_SESSION['soporte']==1)
               <div class="container-fluid">
                 <div class="row">
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Correo:</label>
+                    <label class="lenguaje" key="Mail">Mail:</label>
                     <input type="email" class="form-control" name="correo" id="correo" maxlength="256"
                       placeholder="Correo" required>
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Respuesta:</label>
+                    <label class="lenguaje" key="Answer">Respuesta:</label>
                     <input type="text" class="form-control" name="respuesta" id="respuesta" maxlength="256"
                       placeholder="Respuesta">
                   </div>
@@ -190,7 +190,7 @@ if ($_SESSION['soporte']==1)
               <div class="container-fluid">
                 <div class="row">
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Descripcion:</label>
+                    <label class="lenguaje" key="Description">Descripcion:</label>
                     <input type="text" class="form-control" name="descripcion" id="descripcion"
                       placeholder="Descripción" rows="2" cols="4">
                     <!-- trix editor -->
@@ -198,7 +198,7 @@ if ($_SESSION['soporte']==1)
                     </trix-editor>
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Adjuntar:</label>
+                    <label class="lenguaje" key="Attach">Adjuntar:</label>
                     <input type="file" class="form-control" name="adjuntar[]" id="adjuntar" enctype="multipart/form-data" multiple>
                     <br>
                     <!-- Button trigger modal -->

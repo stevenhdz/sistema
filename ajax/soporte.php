@@ -171,6 +171,8 @@ switch ($_GET["op"]){
 	
 
 					 <a target="_blank" href="'.$url.$reg->idsoporte.'"> <button class="btn btn-info"><i class="fas fa-file-invoice-dollar"></i></button></a>
+
+					 <a href="https://www.google.com/maps/place/'.$reg->direccion.'"><button class="btn btn-danger"><i class="fas fa-map-marker-alt"></i></button></a>
 					 ',
                      "1"=>$reg->nombres." ".$reg->apellidos,
                      "2"=>$reg->fechaentrada,
