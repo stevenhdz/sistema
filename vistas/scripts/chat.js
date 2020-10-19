@@ -1,9 +1,10 @@
 var from = null,
+
             start = 0,
             url = "http://25.45.184.240:8888/sistema/modelos/Chat.php"; //TODO: CON HAMACHI
             /* url = "http://localhost:8888/sistema/modelos/Chat.php"; */
         $(document).ready(function () {
-            from = prompt("Ingrese nombre temporal");
+            from = prompt("Ingrese nombre temporal", "Alex");
             load();
             $("form").submit(function (e) {
                 $.post(url, {

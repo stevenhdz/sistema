@@ -17,7 +17,7 @@ if ($_SESSION['soporte']==1)
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Main content -->
-  <section class="content">
+  <section class="content-fix">
     <div class="row">
       <div class="col-md-12">
         <div class="box">
@@ -199,7 +199,7 @@ if ($_SESSION['soporte']==1)
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label>Adjuntar:</label>
-                    <input type="file" class="form-control" name="adjuntar" id="adjuntar">
+                    <input type="file" class="form-control" name="adjuntar[]" id="adjuntar" enctype="multipart/form-data" multiple>
                     <br>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">

@@ -1,4 +1,7 @@
+
+
 <?php
+
 session_start(); 
 require_once "../modelos/Soporte.php";
 
@@ -20,22 +23,63 @@ $descripcion=isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):
 $valorunidad=isset($_POST["valorunidad"])? limpiarCadena($_POST["valorunidad"]):"";
 $adjuntar=isset($_POST["adjuntar"])? limpiarCadena($_POST["adjuntar"]):"";
 
+
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 
-		if (!file_exists($_FILES['adjuntar']['tmp_name']) || !is_uploaded_file($_FILES['adjuntar']['tmp_name']))
+		if (!file_exists($_FILES['adjuntar']['tmp_name'][$i]) || !is_uploaded_file($_FILES['adjuntar']['tmp_name'][$i]))
+		{
+			$adjuntar=$_POST["adjuntaractual"];
+		}	
+
+		$total = count($_FILES['adjuntar']['tmp_name']);
+
+		for( $i=0 ; $i < $total ; $i++ ) {
+
+			$tmpFilePath = $_FILES['adjuntar']['tmp_name'][$i];
+			$ext = explode(".", $_FILES["adjuntar"]["name"][$i]);
+
+			if ($tmpFilePath != ""){
+			
+				//todo: tipos permidos 
+				if ($_FILES['adjuntar']['type'][$i] == "image/jpg" 
+					|| $_FILES['adjuntar']['type'][$i] == "image/jpeg" 
+					|| $_FILES['adjuntar']['type'][$i]== "image/png"
+					|| $_FILES['adjuntar']['type'][$i]== "text/plain"
+					//TODO: MIME TYPES solo permite antiguos
+					|| $_FILES['adjuntar']['type'][$i]== "application/msword"
+					|| $_FILES['adjuntar']['type'][$i]== "application/zip"
+					|| $_FILES['adjuntar']['type'][$i]== "application/octet-stream"
+					|| $_FILES['adjuntar']['type'][$i]== "application/7z"
+					)
+				{
+					$adjuntar = $nombres.'-'.$fechaentrada.rand(). '.' .end($ext);
+					$newFilePath = "../files/soporte/" . $adjuntar;
+					move_uploaded_file($tmpFilePath, $newFilePath);
+				}
+			}
+
+		  }
+
+		   /* if (!file_exists($total) || !is_uploaded_file($total))
 		{
 			$adjuntar=$_POST["adjuntaractual"];
 		}
 		else 
 		{
 			$ext = explode(".", $_FILES["adjuntar"]["name"]);
-			if ($_FILES['adjuntar']['type'] == "image/jpg" || $_FILES['adjuntar']['type'] == "image/jpeg" || $_FILES['adjuntar']['type'] == "image/png")
+			if ($_FILES['adjuntar']['type'] == "image/jpg" 
+            || $_FILES['adjuntar']['type'] == "image/jpeg" 
+            || $_FILES['adjuntar']['type'] == "image/png")
 			{
 				$adjuntar = $nombres.'-'.$fechaentrada. '.' . end($ext);
-				move_uploaded_file($_FILES["adjuntar"]["tmp_name"], "../files/soporte/" . $adjuntar);
+				move_uploaded_file($_FILES["adjuntar"]["tmp_name"], 
+                "../files/soporte/" . $adjuntar);
 			}
-		}
+		}  */
+		
+		
+
 		if (empty($idsoporte)){
 			$rspta=$soporte->insertar($nombres,$apellidos,$fechaentrada,$direccion,$cantidadequipos,$valortotal= $valorunidad * $cantidadequipos,$identificador,$correo,$respuesta,$telefono,$tipopago,$descripcion,$valorunidad,$adjuntar);
 			echo $rspta ? "Registrado" : "No se pudo registrar";
@@ -52,11 +96,11 @@ switch ($_GET["op"]){
 			$headers .= "Content-type: text/html\r\n";
 			if (mail($to,$subject,$message, $headers))
 				{
-					echo " mensaje enviado";
+					echo "\r\n mensaje enviado";
 				}
 				else
 				{
-					echo " Error: mensaje no enviado";
+					echo "\r\n Error: mensaje no enviado";
 				}
 			
 		}
@@ -76,11 +120,11 @@ switch ($_GET["op"]){
          	$headers .= "Content-type: text/html\r\n";
 			if (mail($to,$subject,$message, $headers))
 					{
-						echo " mensaje enviado";
+						echo "\r\n mensaje enviado";
 					}
 					else
 					{
-						echo " Error: mensaje no enviado";
+						echo "\r\n Error: mensaje no enviado";
 					}
 		}
     break;
@@ -108,7 +152,7 @@ switch ($_GET["op"]){
 			}
 
  			$data[]=array(
- 				"0"=>($reg->soporte)?'<button class="btn btn-warning" onclick="mostrar('.$reg->idsoporte.')"><i class="fas fa-pencil-ruler"></i></button>':
+ 				"0"=>($reg->soporte)?'<button class="btn-sm btn-warning" style="color:white" onclick="mostrar('.$reg->idsoporte.')"><i class="fas fa-pencil-ruler"></i></button>':
 					 '<button class="btn btn-warning" onclick="mostrar('.$reg->idsoporte.')"><i class="fas fa-pencil-ruler"></i></button>
 
 					 <a href="mailto:'.$reg->correo.'?cc=stevenhernandezj@gmail.com&bcc=&subject=Factura SLTECHNOLOGY&body=

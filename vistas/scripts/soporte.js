@@ -114,6 +114,8 @@ function guardaryeditar(e) {
         url: "../ajax/soporte.php?op=guardaryeditar",
         type: "POST",
         data: formData,
+        dataType: "html",
+        cache: false,
         contentType: false,
         processData: false,
 
