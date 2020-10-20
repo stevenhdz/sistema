@@ -5,8 +5,7 @@ var from = null,
             
             /* url = "http://localhost:8888/sistema/modelos/Chat.php"; */
         $(document).ready(function () {
-            from = prompt("Ingrese nombre temporal", 'hola');
-            from = bootbox.alert("Bienvenido: " + from);
+            from = document.getElementById("nickname").innerHTML;
             load();
             $("form").submit(function (e) {
                 $.post(url, {

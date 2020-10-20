@@ -31,7 +31,7 @@ if ($_SESSION['soporte']==1)
           <!-- /.box-header -->
           <!-- centro -->
           <div class="panel-body table-responsive" id="listadoregistros">
-            <table id="tbllistado" class="table-fix table-striped table-bordered table-condensed table-hover">
+            <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
               <thead>
                 <th class="lenguaje" key="Actions">Acciones Preferidas por el usuario</th>
                 <th class="lenguaje" key="Name">Nombres</th>

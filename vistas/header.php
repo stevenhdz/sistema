@@ -38,6 +38,8 @@ if(strlen(session_id())< 1)
 
     <!-- select bootstrap personalizado -->
     <link rel="stylesheet" href="../public/css/bootstrap-select.min.css">
+
+    <!-- texteditor -->
     <link rel="stylesheet" href="../public/css/trix.css">
 
     
@@ -73,7 +75,7 @@ if(strlen(session_id())< 1)
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <!-- traido desde ajax -->
                   <img src="../files/usuarios/<?php echo $_SESSION['imagen'];?>" class="user-image" alt="User Image">
-                  <!-- <span class="hidden-xs"><?php echo $_SESSION['nombre'];?></span> -->
+                  <span class="hidden-xs" id="nickname"><?php echo $_SESSION['nombre'];?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->

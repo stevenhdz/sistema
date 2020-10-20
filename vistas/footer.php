@@ -34,13 +34,12 @@
 <script src="../public/js/bootstrap-select.min.js"></script>
 <!--momentjs personalizado-->
 <script src="../public/js/moment.min.js"></script>
-<!--jquery number personalizado-->
+<!--jquery number personalizado para dinero-->
 <script src="../public/js/jquery.number.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-
+<!-- texteditor -->
 <script src="../public/js/trix.js"></script>
-
+<!-- alert notificaciones -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
                 
 
