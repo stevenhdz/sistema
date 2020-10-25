@@ -17,7 +17,7 @@ if ($_SESSION['soporte']==1)
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Main content -->
-  <section class="content-fix">
+  <section class="content">
     <div class="row">
       <div class="col-md-12">
         <div class="box">

@@ -1,16 +1,20 @@
-var from = null,
+var from = null;
+var image = null;
 
             start = 0,
             url = "http://25.45.184.240:8888/sistema/modelos/Chat.php"; //TODO: CON HAMACHI
             
             /* url = "http://localhost:8888/sistema/modelos/Chat.php"; */
         $(document).ready(function () {
-            from = document.getElementById("nickname").innerHTML;
+            from = document.getElementById("nickname").innerHTML; 
+            image = document.getElementById("im").innerHTML;
+            /*TDOO: se trae del php que contiene el nombre */
             load();
             $("form").submit(function (e) {
                 $.post(url, {
                     message: $("#message").val(),
                     from: from,
+                    image: image,
                 });
                 $("#message").val("");
                 return false;
@@ -35,8 +39,9 @@ var from = null,
             let time = new Date(item.created);
             //TODO: MOMENTJS
             time = moment(time).format("hh:mm A");
-            return `<div class="msg"><p>${item.from}</p>${item.message}<span>${time}</span></div>`;
+            return `<div class="msg"> <p><img src="../files/usuarios/${item.image} "  width="30" height="30"> ${item.from}</p>${item.message}<span>${time}</span></div>`;
         }
+       
 
 
      

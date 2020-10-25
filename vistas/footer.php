@@ -1,6 +1,6 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>V</b> 2.3.1
+        <b>V</b> 2.4.2
 
     <!-- //TODO: versión principal del software. Ejemplo: 1.X.X, 3.X.X
     //TODO: funcionalidades. Ejemplo: X.2.X, X.3.X

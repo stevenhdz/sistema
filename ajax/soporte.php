@@ -43,14 +43,11 @@ switch ($_GET["op"]){
 			
 				//todo: tipos permidos 
 				if ($_FILES['adjuntar']['type'][$i] == "image/jpg" 
-					|| $_FILES['adjuntar']['type'][$i] == "image/jpeg" 
+					|| $_FILES['adjuntar']['type'][$i] == "image/jpeg"
 					|| $_FILES['adjuntar']['type'][$i]== "image/png"
 					|| $_FILES['adjuntar']['type'][$i]== "text/plain"
 					//TODO: MIME TYPES solo permite antiguos
 					|| $_FILES['adjuntar']['type'][$i]== "application/msword"
-					|| $_FILES['adjuntar']['type'][$i]== "application/zip"
-					|| $_FILES['adjuntar']['type'][$i]== "application/octet-stream"
-					|| $_FILES['adjuntar']['type'][$i]== "application/7z"
 					)
 				{
 					$adjuntar = $nombres.'-'.$fechaentrada.rand(). '.' .end($ext);

@@ -3,6 +3,7 @@
 <?php
 if(strlen(session_id())< 1)
       session_start();
+      require_once "../ajax/soporte.php";
 ?>
 
 
@@ -86,6 +87,7 @@ if(strlen(session_id())< 1)
                       <small><span class="hidden-xs"><?php echo $_SESSION['cargo'];?></span></small>
                       <small><span class="hidden-xs"><?php echo $_SESSION['telefono'];?></span></small>
                       <small><span class="hidden-xs"><?php echo $_SESSION['email'];?></span></small>
+                      <small hidden="hidden"><span id="im" class="hidden-xs"><?php echo $_SESSION['imagen'];?></span></small>
                     </p>
                   </li>
                   
@@ -93,7 +95,7 @@ if(strlen(session_id())< 1)
                   <li class="user-footer">
                     
                     <div class="pull-right">
-                      <a href="../ajax/usuario.php?op=mostrar(1)" class="btn btn-default btn-flat"><i class="fa fa-key" aria-hidden="true"></i>Contraseña</a>
+                    <button class="btn-sm btn-warning" style="color:white" onclick="mostrar()"><i class="fas fa-pencil-ruler"></i>Contraseña</button>
                       <a href="../ajax/usuario.php?op=salir" class="btn btn-default btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i>Cerrar sesion</a>
                     </div>
                   </li>

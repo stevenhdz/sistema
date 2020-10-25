@@ -9,9 +9,10 @@ if($db->connect_error){
 $result = array();
 $message = isset($_POST['message']) ? $_POST['message'] : null;
 $from = isset($_POST['from']) ? $_POST['from'] : null;
+$image = isset($_POST['image']) ? $_POST['image'] : null;
 
-if(!empty($message) && !empty($from)){
-    $sql = "INSERT INTO `chat` (`message`,`from`) VALUES ('".$message."','".$from."')";
+if(!empty($message) && !empty($from) && !empty($image)){
+    $sql = "INSERT INTO `chat` (`message`,`from`,`image`) VALUES ('".$message."','".$from."','".$image."')";
     $result['send_status'] = $db->query($sql);
 }
 
