@@ -86,7 +86,7 @@ switch ($_GET["op"]){
 			error_reporting( E_ALL );
 			$from = "stevenhernandezj@gmail.com";
 			$to = $correo;
-			$subject = "FACTURA SLTECHNOLOGY";
+			$subject = "CONSTANCIA DE SOPORTE SLTECHNOLOGY";
 			$message = "$descripcion";
 			$headers = "From:" . $from. "\r\n" .'X-Mailer: PHP/' . phpversion();
 			$headers .= "MIME-Version: 1.0\r\n";
@@ -110,7 +110,7 @@ switch ($_GET["op"]){
 			error_reporting( E_ALL );
 			$from = "stevenhernandezj@gmail.com";
 			$to = $correo;
-			$subject = "FACTURA SLTECHNOLOGY COPIA";
+			$subject = "FACTURA SLTECHNOLOGY";
 			$message = "$descripcion";
 			$headers = "From:" . $from.'X-Mailer: PHP/' . phpversion();
 			$headers .= "MIME-Version: 1.0\r\n";

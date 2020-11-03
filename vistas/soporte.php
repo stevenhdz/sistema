@@ -50,22 +50,6 @@ if ($_SESSION['soporte']==1)
               </thead>
               <tbody>
               </tbody>
-              <tfoot>
-                <th class="lenguaje" key="Actions">>Acciones Preferidas por el usuario</th>
-                <th class="lenguaje" key="Name">Nombres</th>
-                <th class="lenguaje" key="Admission Date">Fecha Entrada</th>
-                <th class="lenguaje" key="Address">Direccion</th>
-                <th class="lenguaje" key="Number of Computer Equipment">Cantidad equipos</th>
-                <th class="lenguaje" key="Total to Pay">Total a cobrar</th>
-                <th class="lenguaje" key="Identifier">Identidad</th>
-                <th class="lenguaje" key="Mail">Correo</th>
-                <th class="lenguaje" key="Answer">Respuesta</th>
-                <th class="lenguaje" key="Cell Phone">Contacto</th>
-                <th class="lenguaje" key="Payment Type">Medio de pago</th>
-                <th class="lenguaje" key="Description">Descripcion</th>
-                <th class="lenguaje" key="Unit Value">Precio individual</th>
-                <th class="lenguaje" key="Visor">Visor</th>
-              </tfoot>
             </table>
           </div>
           <div class="panel-body" id="formularioregistros">
@@ -146,7 +130,7 @@ if ($_SESSION['soporte']==1)
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label class="lenguaje" key="Total to Pay">Total a cobrar:</label>
                     <input type="text" class="form-control" name="valortotal" id="valortotal" maxlength="256"
-                      placeholder="Valortotal">
+                      placeholder="Valortotal" disabled>
                   </div>
                 </div>
               </div>

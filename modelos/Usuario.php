@@ -83,7 +83,7 @@ Class Usuario
 	public function listar()
 	{
 		$sql="SELECT * FROM usuario";
-		return ejecutarConsulta($sql);		
+		return ejecutarConsulta($sql);
 	}
 	//Implementar un método para listar los permisos marcados
 	public function listarmarcados($idusuario)

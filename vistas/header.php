@@ -95,7 +95,7 @@ if(strlen(session_id())< 1)
                   <li class="user-footer">
                     
                     <div class="pull-right">
-                    <button class="btn-sm btn-warning" style="color:white" onclick="mostrar()"><i class="fas fa-pencil-ruler"></i>Contraseña</button>
+                      
                       <a href="../ajax/usuario.php?op=salir" class="btn btn-default btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i>Cerrar sesion</a>
                     </div>
                   </li>
