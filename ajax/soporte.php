@@ -34,30 +34,27 @@ switch ($_GET["op"]){
 
 		$total = count($_FILES['adjuntar']['tmp_name']);
 
-		for( $i=0 ; $i < $total ; $i++ ) {
+			for( $i=0 ; $i < $total ; $i++ ) {
 
-			$tmpFilePath = $_FILES['adjuntar']['tmp_name'][$i];
-			$ext = explode(".", $_FILES["adjuntar"]["name"][$i]);
+				$tmpFilePath = $_FILES['adjuntar']['tmp_name'][$i];
+				$ext = explode(".", $_FILES["adjuntar"]["name"][$i]);
 
-			if ($tmpFilePath != ""){
-			
-				//todo: tipos permidos 
-				if ($_FILES['adjuntar']['type'][$i] == "image/jpg" 
-					|| $_FILES['adjuntar']['type'][$i] == "image/jpeg"
-					|| $_FILES['adjuntar']['type'][$i]== "image/png"
-					|| $_FILES['adjuntar']['type'][$i]== "text/plain"
-					//TODO: MIME TYPES solo permite antiguos
-					|| $_FILES['adjuntar']['type'][$i]== "application/msword"
-					)
+				if ($tmpFilePath != "")
 				{
-					$adjuntar = $nombres.'-'.$fechaentrada.rand(). '.' .end($ext);
-					$newFilePath = "../files/soporte/" . $adjuntar;
-					move_uploaded_file($tmpFilePath, $newFilePath);
-				}
+					//todo: tipos permidos
+					if ($_FILES['adjuntar']['type'][$i] == "image/jpg" 
+						|| $_FILES['adjuntar']['type'][$i] == "image/jpeg"
+						|| $_FILES['adjuntar']['type'][$i] == "image/png"
+						|| $_FILES['adjuntar']['type'][$i] == "text/plain"
+						//TODO: MIME TYPES solo permite antiguos
+						|| $_FILES['adjuntar']['type'][$i]== "application/msword")
+					{
+						$adjuntar = $nombres.'-'.$fechaentrada.rand(). '.' .end($ext);
+						$newFilePath = "../files/soporte/" . $adjuntar;
+						move_uploaded_file($tmpFilePath, $newFilePath);	
+					}
+		  		}
 			}
-
-		  }
-
 		   /* if (!file_exists($total) || !is_uploaded_file($total))
 		{
 			$adjuntar=$_POST["adjuntaractual"];
@@ -82,11 +79,13 @@ switch ($_GET["op"]){
 			echo $rspta ? "Registrado" : "No se pudo registrar";
 
 			//TODO: ENVIAR CORREO 
+			$mensaje = "CONSTANCIa DE SOPORTE SLTECHNOLOGY";
+
 			ini_set( 'display_errors', 1 );
 			error_reporting( E_ALL );
 			$from = "stevenhernandezj@gmail.com";
 			$to = $correo;
-			$subject = "CONSTANCIA DE SOPORTE SLTECHNOLOGY";
+			$subject = strtoupper($mensaje);
 			$message = "$descripcion";
 			$headers = "From:" . $from. "\r\n" .'X-Mailer: PHP/' . phpversion();
 			$headers .= "MIME-Version: 1.0\r\n";

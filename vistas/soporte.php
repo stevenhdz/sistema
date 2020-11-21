@@ -13,7 +13,7 @@ require 'header.php';
 if ($_SESSION['soporte']==1)
 {
 ?>
-<!--Contenido-->
+<!--Contenido  style="display:none;"-->
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Main content -->

@@ -49,14 +49,10 @@ if($_SESSION['chat']==1)
               </div>
             </div>
           </form>
-
-
-          <!--Fin centro -->
         </div>
       </div><!-- /.col -->
     </div><!-- /.row -->
   </section><!-- /.content -->
-
 </div><!-- /.content-wrapper -->
 <!--Fin-Contenido-->
 

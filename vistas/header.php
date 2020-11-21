@@ -1,6 +1,10 @@
 <!-- valida si ya esta iniciada la sesion para no tener que iniciar. -->
 
 <?php
+
+
+
+
 if(strlen(session_id())< 1)
       session_start();
       require_once "../ajax/soporte.php";
@@ -47,13 +51,13 @@ if(strlen(session_id())< 1)
 
 
   </head>
-  <body class="hold-transition skin-blue-light sidebar-mini">
+  <body class="hold-transition skin-black-light sidebar-mini">
     <div class="wrapper">
 
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="../vistas/principal.php" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>SL</b>TEC</span>
           <!-- logo for regular state and mobile devices -->
