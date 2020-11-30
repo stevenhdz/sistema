@@ -11,15 +11,16 @@ else
 {
 require 'header.php';
 if ($_SESSION['soporte']==1)
-{
+{ 
 ?>
+
 <!--Contenido  style="display:none;"-->
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Main content -->
   <section class="content">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-lg-12">
         <div class="box">
           <div class="box-header with-border">
             <h1 class="box-title lenguaje" key="Form Support">Soporte</h1>
@@ -31,7 +32,7 @@ if ($_SESSION['soporte']==1)
           <!-- /.box-header -->
           <!-- centro -->
           <div class="panel-body table-responsive" id="listadoregistros">
-            <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
+            <table id="tbllistado" class="table-xs table-striped table-bordered table-condensed table-hover">
               <thead>
                 <th class="lenguaje" key="Actions">Acciones Preferidas por el usuario</th>
                 <th class="lenguaje" key="Name">Nombres</th>
@@ -54,61 +55,44 @@ if ($_SESSION['soporte']==1)
           </div>
           <div class="panel-body" id="formularioregistros">
             <form name="formulario" id="formulario" method="POST">
+
               <div class="container-fluid">
                 <div class="row">
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <label class="lenguaje" key="Name">Nombre(*):</label>
                     <input type="hidden" name="idsoporte" id="idsoporte">
-                    <input type="text" class="form-control" name="nombres" id="nombres" minlength="3" maxlength="100"
-                      placeholder="Nombres" required>
+                    <input type="text" class="form-control" name="nombres" id="nombres"
+                      placeholder="Nombres">
                   </div>
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <label class="lenguaje" key="Last Names">Apellidos(*):</label>
                     <input type="text" class="form-control" name="apellidos" id="apellidos" maxlength="256"
                       placeholder="Apellidos" required>
                   </div>
-                </div>
-              </div>
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <label class="lenguaje" key="Admission Date">Fecha Entrada(*):</label>
                     <input type="datetime-local" class="form-control" name="fechaentrada" id="fechaentrada" required>
                   </div>
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <label class="lenguaje" key="Cell Phone">Telefono:</label>
                     <input type="text" class="form-control" name="telefono" id="telefono" maxlength="256"
                       placeholder="Telefono">
-                    <!-- <input type="text" class="form-control" name="telefono" id="telefono" maxlength="256"
-                      placeholder="Telefono" pattern="[A-Za-z]{3,100}" required oninput="check_text(this);">
-                      <script type="text/javascript">
-                        function check_text(input) {  
-                            if (input.validity.patternMismatch){  
-                                input.setCustomValidity("Debe ingresar al menos 3 LETRAS");  
-                            }  
-                            else {  
-                                input.setCustomValidity("");  
-                            }                 
-                        }  </script> -->
-
                   </div>
                 </div>
               </div>
               <div class="container-fluid">
                 <div class="row">
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <label class="lenguaje" key="Address">Direccion:</label>
                     <input type="text" class="form-control" name="direccion" id="direccion" maxlength="256"
                       placeholder="Direccion">
                   </div>
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <label class="lenguaje" key="Payment Type">Tipo Pago:</label>
-
-
                     <div class="input-group mb-3">
                       <select type="text" class="form-control" name="tipopago" id="tipopago" maxlength="256"
                         placeholder="Tipopago" class="custom-select" id="inputGroupSelect02">
-                        <option selected>Elige...</option>
+                        <option selected></option>
                         <option value="Efectivo">Efectivo</option>
                         <option value="Transferencia">Transferencia</option>
                         <option value="Otro">Otro</option>
@@ -118,30 +102,27 @@ if ($_SESSION['soporte']==1)
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <label class="lenguaje" key="Number of Computer Equipment">Cantidad Equipos:</label>
                     <input type="number" class="form-control" name="cantidadequipos" id="cantidadequipos"
                       maxlength="256" placeholder="CantidadEquipos" required>
                   </div>
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <label class="lenguaje" key="Total to Pay">Total a cobrar:</label>
                     <input type="text" class="form-control" name="valortotal" id="valortotal" maxlength="256"
                       placeholder="Valortotal" disabled>
                   </div>
                 </div>
               </div>
+              
               <div class="container-fluid">
                 <div class="row">
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <label class="lenguaje" key="Unit Value">Valor Unidad:</label>
                     <input type="text" class="form-control" name="valorunidad" id="valorunidad" maxlength="256"
                       placeholder="Valorunidad">
                   </div>
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <label class="lenguaje" key="Identifier">Identificador:</label>
                     <div class="input-group mb-3">
                       <select type="text" class="form-control" name="identificador" id="identificador" maxlength="256"
@@ -155,33 +136,12 @@ if ($_SESSION['soporte']==1)
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <label class="lenguaje" key="Mail">Mail:</label>
-                    <input type="email" class="form-control" name="correo" id="correo" maxlength="256"
-                      placeholder="Correo" required>
+                    <input class="form-control" name="correo" id="correo" maxlength="256"
+                      placeholder="Correo">
                   </div>
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label class="lenguaje" key="Answer">Respuesta:</label>
-                    <input type="text" class="form-control" name="respuesta" id="respuesta" maxlength="256"
-                      placeholder="Respuesta">
-                  </div>
-                </div>
-              </div>
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label class="lenguaje" key="Description">Descripcion:</label>
-                    <input type="text" class="form-control" name="descripcion" id="descripcion"
-                      placeholder="Descripción" rows="2" cols="4">
-                    <!-- trix editor -->
-                    <trix-editor input="descripcion" type="text" class="form-control" placeholder="Descripción">
-                    </trix-editor>
-                  </div>
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <label class="lenguaje" key="Attach">Adjuntar:</label>
                     <input type="file" class="form-control" name="adjuntar[]" id="adjuntar" enctype="multipart/form-data" multiple>
                     <br>
@@ -203,7 +163,7 @@ if ($_SESSION['soporte']==1)
                           <div class="modal-dialog modal-dialog-scrollable modal-body">
                             <input type="hidden" name="adjuntaractual" id="adjuntaractual">
                             <br>
-                            <img src="" width="460px" height="500px" id="adjuntarmuestra">
+                            <img src="" width="430px" height="500px" id="adjuntarmuestra">
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -211,8 +171,26 @@ if ($_SESSION['soporte']==1)
                         </div>
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+              
 
-
+              
+              <div class="container-fluid">
+                <div  class="row">
+                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <label class="lenguaje" key="Description">Descripcion:</label>
+                    <textarea type="text" class="form-control" rows="10" name="descripcion" id="descripcion"
+                      placeholder="Descripción" rows="2" cols="4"></textarea>
+                    <!-- trix editor -->
+                    <trix-editor input="descripcion" type="text" class="form-control" placeholder="Descripción">
+                    </trix-editor>
+                  </div>
+                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <label class="lenguaje" key="Answer">Respuesta:</label>
+                    <textarea class="form-control" rows="15" name="respuesta" id="respuesta"
+                      placeholder="Respuesta"></textarea>
                   </div>
                 </div>
               </div>
@@ -223,6 +201,9 @@ if ($_SESSION['soporte']==1)
                       Guardar</button>
                     <button class="btn btn-danger" onclick="cancelarform()" type="button"><i
                         class="fa fa-arrow-circle-left"></i> Cancelar</button>
+
+                        <button type="button" class="btn btn-danger" value="Exportar" onclick="ir()">Exportar</button>
+                        <button type="button" class="btn btn-danger" value="Borrar" onclick="ir1()">Eliminar</button>
                   </div>
                 </div>
               </div>
@@ -244,6 +225,15 @@ else
 }
 require 'footer.php';
 ?>
+<script type="text/javascript">
+  function ir(){
+   window.location="/sistema/files/usuarios/comprimirArchivos.php";//pagina donde tienes tus consultas para borrar 
+  }
+
+  function ir1(){
+   window.location="/sistema/files/usuarios/borrarArchivos.php";//pagina donde tienes tus consultas para borrar 
+  }
+</script>
 <script type="text/javascript" src="../public/js/JsBarcode.all.min.js"></script>
 <script type="text/javascript" src="../public/js/jquery.PrintArea.js"></script>
 <script type="text/javascript" src="scripts/soporte.js"></script>

@@ -9,6 +9,8 @@ Class Soporte
 	{
 	}
 
+	
+
 	//Implementamos un método para insertar registros
 	public function insertar($nombres,$apellidos,$fechaentrada,$direccion,$cantidadequipos,$valortotal,$identificador,$correo,$respuesta,$telefono,$tipopago,$descripcion,$valorunidad,$adjuntar)
 	{

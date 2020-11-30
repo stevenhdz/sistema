@@ -75,7 +75,8 @@ switch ($_GET["op"]){
 		
 
 		if (empty($idsoporte)){
-			$rspta=$soporte->insertar($nombres,$apellidos,$fechaentrada,$direccion,$cantidadequipos,$valortotal= $valorunidad * $cantidadequipos,$identificador,$correo,$respuesta,$telefono,$tipopago,$descripcion,$valorunidad,$adjuntar);
+			$rspta=$soporte->insertar(
+				$nombres,$apellidos,$fechaentrada,$direccion,$cantidadequipos,$valortotal= $valorunidad * $cantidadequipos,$identificador,$correo,$respuesta,$telefono,$tipopago,$descripcion,$valorunidad,$adjuntar);
 			echo $rspta ? "Registrado" : "No se pudo registrar";
 
 			//TODO: ENVIAR CORREO 
@@ -110,6 +111,7 @@ switch ($_GET["op"]){
 			$from = "stevenhernandezj@gmail.com";
 			$to = $correo;
 			$subject = "FACTURA SLTECHNOLOGY";
+			$file = "";
 			$message = "$descripcion";
 			$headers = "From:" . $from.'X-Mailer: PHP/' . phpversion();
 			$headers .= "MIME-Version: 1.0\r\n";
@@ -164,6 +166,7 @@ switch ($_GET["op"]){
 					 '.$reg->correo.',%20el%20numero%20de%20tu%20servicio%20es,%20
 					 '.$reg->idsoporte.'%20que%20tengas%20un%20buen%20dia%20y%20gracias%20por%20acudir%20a%20nosotros%20SOMOS%20SLTECHNOLOGY. 
 					 "class="btn btn-success"><i class="fab fa-whatsapp"></i></a>
+
 	
 
 					 <a target="_blank" href="'.$url.$reg->idsoporte.'"> <button class="btn btn-info"><i class="fas fa-file-invoice-dollar"></i></button></a>
@@ -177,7 +180,7 @@ switch ($_GET["op"]){
                      "5"=>'$ '.$reg->valortotal,
                      "6"=>$reg->identificador,
 					 "7"=>$reg->correo,
-					 "8"=>$reg->respuesta,
+					 "8"=>'<textarea type="text" class="form-control" placeholder="Sin descripción" >'.$reg->respuesta.'</textarea>',
                      "9"=>$reg->telefono,
                      "10"=>$reg->tipopago,
 					 "11"=>'<textarea type="text" class="form-control" placeholder="Sin descripción" >'.$reg->descripcion.'</textarea>',

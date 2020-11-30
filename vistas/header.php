@@ -51,7 +51,7 @@ if(strlen(session_id())< 1)
 
 
   </head>
-  <body class="hold-transition skin-black-light sidebar-mini">
+  <body class="hold-transition skin-green sidebar-mini">
     <div class="wrapper">
 
       <header class="main-header">
@@ -59,7 +59,7 @@ if(strlen(session_id())< 1)
         <!-- Logo -->
         <a href="../vistas/principal.php" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>SL</b>TEC</span>
+          <span class="logo-mini"><b>SL</b>TE</span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg"><b>SLTECHNOLOGY</b></span>
         </a>
@@ -274,7 +274,7 @@ if(strlen(session_id())< 1)
                     echo'<li class="treeview">
                     <a href="#">
                     <i class="fab fa-fort-awesome"></i>
-                    <span>Soporte</span>
+                    <span class="lenguaje" key="Form Support">Soporte</span>
                       <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">

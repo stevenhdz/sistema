@@ -127,6 +127,7 @@ function guardaryeditar(e) {
 
     });
     limpiar();
+    
 }
 
 
@@ -153,8 +154,13 @@ function mostrar(idsoporte) {
         $("#adjuntaractual").val(data.adjuntar);
         $("#idsoporte").val(data.idsoporte);
 
+        
+
     });
 }
+
+
+
 
 
 
