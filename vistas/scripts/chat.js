@@ -39,7 +39,7 @@ var image = null;
             let time = new Date(item.created);
             //TODO: MOMENTJS
             time = moment(time).format("hh:mm A");
-            return `<div class="msg"> <p><img src="../files/usuarios/${item.image} "  width="30" height="30"> ${item.from}</p>${item.message}<span>${time}</span></div>`;
+            return `<div class="msg imgdisegn"> <p><img src="../files/usuarios/${item.image} " class="imgd" width="30" height="30"> ${item.from}</p>${item.message}<span class="">${time}</span></div>`;
         }
        
 

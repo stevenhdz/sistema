@@ -47,9 +47,6 @@ if(strlen(session_id())< 1)
     <!-- texteditor -->
     <link rel="stylesheet" href="../public/css/trix.css">
 
-    
-
-
   </head>
   <body class="hold-transition skin-green sidebar-mini">
     <div class="wrapper">
@@ -91,6 +88,7 @@ if(strlen(session_id())< 1)
                       <small><span class="hidden-xs"><?php echo $_SESSION['cargo'];?></span></small>
                       <small><span class="hidden-xs"><?php echo $_SESSION['telefono'];?></span></small>
                       <small><span class="hidden-xs"><?php echo $_SESSION['email'];?></span></small>
+                      <small><span hidden="hidden" id="idusuario1" class="hidden-xs"><?php echo $_SESSION['idusuario'];?></span></small>
                       <small hidden="hidden"><span id="im" class="hidden-xs"><?php echo $_SESSION['imagen'];?></span></small>
                     </p>
                   </li>
@@ -99,7 +97,7 @@ if(strlen(session_id())< 1)
                   <li class="user-footer">
                     
                     <div class="pull-right">
-                      
+                      <a href="../vistas/config.php" class="btn btn-default btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i>Configuracion</a>
                       <a href="../ajax/usuario.php?op=salir" class="btn btn-default btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i>Cerrar sesion</a>
                     </div>
                   </li>

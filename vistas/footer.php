@@ -41,7 +41,6 @@
 <script src="../public/js/trix.js"></script>
 <!-- alert notificaciones -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-                
 
 
 

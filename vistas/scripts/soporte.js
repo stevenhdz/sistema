@@ -85,9 +85,11 @@ function listar() {
                     text:      '<i class="fa fa-file-pdf-o"></i>',
                     titleAttr: 'PDF'
                     //TODO: horizontal
-                },
+                }
           
         ],
+        
+        
         "ajax": {
             url: '../ajax/soporte.php?op=listar',
             type: "get",

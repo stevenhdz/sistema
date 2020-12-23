@@ -2,7 +2,6 @@
 
 <?php
 
-session_start(); 
 require_once "../modelos/Soporte.php";
 
 $soporte=new Soporte();
@@ -22,7 +21,6 @@ $tipopago=isset($_POST["tipopago"])? limpiarCadena($_POST["tipopago"]):"";
 $descripcion=isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):"";
 $valorunidad=isset($_POST["valorunidad"])? limpiarCadena($_POST["valorunidad"]):"";
 $adjuntar=isset($_POST["adjuntar"])? limpiarCadena($_POST["adjuntar"]):"";
-
 
 switch ($_GET["op"]){
 	case 'guardaryeditar':

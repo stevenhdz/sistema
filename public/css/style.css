@@ -35,4 +35,14 @@
     font-size: 0.7rem;
     margin-left: 15px;
   }
+  .imgdisegn {
+    padding: 10px;
+    border-radius: 9px;
+  }
+  .imgd {
+    border-radius: 15px;
+  }
 
+  span.derecha{
+    margin-right: 0px;
+    }
