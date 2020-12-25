@@ -85,6 +85,23 @@ function listar() {
                     text:      '<i class="fa fa-file-pdf-o"></i>',
                     titleAttr: 'PDF'
                     //TODO: horizontal
+                },
+                {
+                    extend: 'colvisGroup',
+                    text: 'Office info',
+                    show: [ 1, 2, 3, 11],
+                    hide: [ 3, 4, 5, 6, 7, 8, 9, 10, 12, 13]
+                },
+                {
+                    extend: 'colvisGroup',
+                    text: 'HR info',
+                    show: [ 3, 4, 5 ],
+                    hide: [ 1, 2 ]
+                },
+                {
+                    extend: 'colvisGroup',
+                    text: 'Show all',
+                    show: ':hidden'
                 }
           
         ],

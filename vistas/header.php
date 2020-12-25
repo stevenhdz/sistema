@@ -32,6 +32,7 @@ if(strlen(session_id())< 1)
     <link rel="apple-touch-icon" href="../public/img/apple-touch-icon.png">
     <link rel="shortcut icon" href="../public/img/favicon.ico">
 
+    
      <!-- material icon -->
     <link  href="../public/css/icon.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.1/css/all.min.css"/>
@@ -70,6 +71,8 @@ if(strlen(session_id())< 1)
           <!-- Navbar Right Menu -->
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+
+            
               
               
               <!-- User Account: style can be found in dropdown.less -->
@@ -282,7 +285,21 @@ if(strlen(session_id())< 1)
                 }
             ?> 
 
-            
+<?php
+             if($_SESSION['configuracion avanzada']==1)
+                {  
+                    echo'<li class="treeview">
+                    <a href="#">
+                    <i class="fab fa-fort-awesome"></i>
+                    <span >configuracion avanzada</span>
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="configsadvanced.php"><i class="fa fa-circle-o"></i>Configuraciones Avanzadas</a></li>
+                    </ul>
+                  </li>';
+                }
+            ?> 
           
 
             <li>

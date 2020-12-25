@@ -1,10 +1,13 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 include '/Applications/MAMP/htdocs/sistema/config/conexion.php';
 
 try {
+
     $sql = "select * from soporte";
     
-    $filename = "soporte-" . date('Y-m-d') . ".csv";
+    $filename = "soporte-" . date('Y-m-d').".csv";
     
     $query = $conexion->query($sql);
     
@@ -32,11 +35,22 @@ try {
     }
     
     header('Content-Type: application/csv');
-    header('Content-Disposition: attachment; filename="' . $filename . '";');
+    header('Content-Disposition: attachment; filename="' . str_replace("-","",$filename). '";');
     
+    $var = '/Users/alexanderjimenez/downloads/'.str_replace("-","",$filename);
+    
+    if(isset($var)){
+
+        $carpeta = 'archivos';
+        $root = __dir__.'/'.$carpeta;
+            copy('/Users/alexanderjimenez/downloads/'.str_replace("-","",$filename),'/Applications/MAMP/htdocs/sistema/files/usuarios/archivos/'.str_replace("-","",$filename));
+          
+        }
+
 } catch (Exception $th) {
     echo '<h1>'.$th.'</h1>';
 }
+
 
 
 ?>

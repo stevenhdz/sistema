@@ -9,5 +9,6 @@
 	in_array(7,$valores)?$_SESSION['consultav']=1:$_SESSION['consultav']=0;
 	in_array(8,$valores)?$_SESSION['chat']=1:$_SESSION['chat']=0;
 	in_array(9,$valores)?$_SESSION['soporte']=1:$_SESSION['soporte']=0;
+	in_array(10,$valores)?$_SESSION['configuracion avanzada']=1:$_SESSION['configuracion avanzada']=0;
 /*  in_array(10,$valores)?$_SESSION['publicidad']=1:$_SESSION['publicidad']=0;
 	in_array(11,$valores)?$_SESSION['estadoSoporte']=1:$_SESSION['estadoSoporte']=0; */

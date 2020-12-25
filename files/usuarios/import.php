@@ -7,7 +7,8 @@ if(!$conexion){
 if (@mysqli_connect_errno()) {
     die("Connect failed: ".mysqli_connect_errno()." : ". mysqli_connect_error());
 }
-   $producto = fopen ("/Applications/MAMP/htdocs/sistema/files/usuarios/export.csv" , "r" );
+   $archivo = $_POST['archivo'];
+   $producto = fopen ("/Applications/MAMP/htdocs/sistema/files/usuarios/archivos/$archivo" , "r" );
    $i=0;
    while (($datos=fgetcsv($producto,1000,";")) !== FALSE){
     $i++; if($i==1) continue; // saltar la 1
@@ -80,6 +81,10 @@ if (@mysqli_connect_errno()) {
 echo "Registros insertados: ".number_format($insertados,2)." <br/>";
 echo "Registros actualizados: ".number_format($actualizados,2)." <br/>";
 echo "Errores: ".number_format($errores,2)." <br/>";
-    
+
+$filename = "soporte-" . date('Y-m-d').".csv";
+
+    unlink('/Applications/MAMP/htdocs/sistema/files/usuarios/archivos/'.str_replace("-","",$filename));
+
     
 ?>

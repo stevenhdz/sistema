@@ -2,7 +2,9 @@
 
 try {
     
-if ($files = glob("*.jpg")) {
+$extension = $_POST['extencion'];
+
+if ($files = glob("$extension")) {
     foreach ($files as $file) {
         if(is_file($file))
         unlink($file);
